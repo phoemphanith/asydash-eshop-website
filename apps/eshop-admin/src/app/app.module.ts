@@ -5,9 +5,17 @@ import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './app.routes';
 import { UiModule } from '@eshop/ui';
+import { ShellComponent } from './shared/shell/shell.component';
+import { SidebarComponent } from './shared/sidebar/sidebar.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [
+    AppComponent,
+    ShellComponent,
+    SidebarComponent,
+    DashboardComponent,
+  ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes, { initialNavigation: 'enabledBlocking' }),

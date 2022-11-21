@@ -12,12 +12,9 @@
 @import './base/configuration.scss';
 
 // *Pages
-@import './apps/eshop/pages/home-page.scss';
-@import './apps/eshop/pages/product-list-page.scss';
 
 // *Shared
-@import './apps/eshop/shared/header.scss';
-@import './apps/eshop/shared/footer.scss';
+@import './apps/eshop-admin/shell.scss';
 
 // *Libs
 @import './libs/ui/ui.scss';
