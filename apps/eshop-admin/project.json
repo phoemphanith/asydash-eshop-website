@@ -36,6 +36,16 @@
               "maximumError": "4kb"
             }
           ],
+          "fileReplacements": [
+            {
+              "replace": "environments/environment.ts",
+              "with": "environments/environment.prod.ts"
+            },
+            {
+              "replace": "apps/eshop-admin/src/index.html",
+              "with": "apps/eshop-admin/src/index.prod.html"
+            }
+          ],
           "outputHashing": "all"
         },
         "development": {

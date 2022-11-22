@@ -1,7 +1,13 @@
+<p-toast></p-toast>
+<p-confirmDialog
+  [style]="{ width: '30vw' }"
+  position="top"
+  [baseZIndex]="10000"
+  rejectButtonStyleClass="p-button-outlined"
+></p-confirmDialog>
 <div class="admin__wrapper">
   <eshop-admin-sidebar></eshop-admin-sidebar>
   <div class="admin__main">
-    hello
     <router-outlet></router-outlet>
   </div>
 </div>
