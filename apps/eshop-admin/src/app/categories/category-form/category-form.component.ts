@@ -16,7 +16,7 @@ export class CategoryFormComponent implements OnInit {
   form = this.fb.group({
     name: ['', Validators.required],
     icon: ['', Validators.required],
-    color: ['', Validators.required],
+    color: [''],
   });
 
   constructor(

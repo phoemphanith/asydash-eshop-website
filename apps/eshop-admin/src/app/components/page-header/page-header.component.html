@@ -1,0 +1,15 @@
+<div class="page__header">
+  <div class="page__header--left">
+    <h2>{{ title | uppercase }}</h2>
+    <p>{{ subtitle }}</p>
+  </div>
+  <div class="page__header--right">
+    <p-button
+      *ngIf="btnLink"
+      label="Create New"
+      icon="pi pi-plus"
+      styleClass="p-button-success"
+      [routerLink]="btnLink"
+    ></p-button>
+  </div>
+</div>

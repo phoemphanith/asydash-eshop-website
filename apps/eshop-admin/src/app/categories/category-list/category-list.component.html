@@ -1,64 +1,61 @@
 <div class="admin__page">
-  <p-card header="Category" subheader="List all categories">
-    <div class="p-grid">
-      <div class="p-col-12">
-        <p-toolbar>
-          <div class="p-toolbar-group-left">
-            <p-button
-              label="Add New"
-              icon="pi pi-plus"
-              styleClass="p-button-success"
-              routerLink="/categories/form"
-            ></p-button>
-          </div>
-        </p-toolbar>
-        <p-table [value]="categories" styleClass="p-datatable-gridlines mt-2">
-          <ng-template pTemplate="header">
-            <tr>
-              <th pSortableColumn="name">
-                Name <p-sortIcon field="name"></p-sortIcon>
-              </th>
-              <th>Icon</th>
-              <th>Color</th>
-              <th></th>
-            </tr>
-          </ng-template>
-          <ng-template pTemplate="body" let-category>
-            <tr>
-              <td>{{ category.name }}</td>
-              <td><i class="pi" [ngClass]="'pi-' + category.icon"></i></td>
-              <td>
-                <span
-                  [ngStyle]="{
-                    display: 'inline-block',
-                    width: '20px',
-                    height: '20px',
-                    backgroundColor: category.color
-                  }"
-                ></span>
-              </td>
-              <td>
-                <button
-                  pButton
-                  pRipple
-                  type="button"
-                  icon="pi pi-trash"
-                  class="p-button-rounded p-button-danger p-button-text"
-                  (click)="onDelete(category._id)"
-                ></button>
-                <button
-                  pButton
-                  pRipple
-                  type="button"
-                  icon="pi pi-file-edit"
-                  class="p-button-rounded p-button-info p-button-text"
-                  [routerLink]="'/categories/form/' + category._id"
-                ></button>
-              </td>
-            </tr>
-          </ng-template>
-        </p-table>
+  <eshop-admin-page-header
+    title="Category"
+    subtitle="List all category"
+    btnLink="/categories/form"
+  ></eshop-admin-page-header>
+  <div class="page__body">
+    <p-card>
+      <div class="p-grid">
+        <div class="p-col-12">
+          <p-table [value]="categories">
+            <ng-template pTemplate="header">
+              <tr>
+                <th pSortableColumn="name">
+                  Name <p-sortIcon field="name"></p-sortIcon>
+                </th>
+                <th>Icon</th>
+                <th>Color</th>
+                <th></th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-category>
+              <tr>
+                <td>{{ category.name }}</td>
+                <td><i class="pi" [ngClass]="'pi-' + category.icon"></i></td>
+                <td>
+                  <span
+                    [ngStyle]="{
+                      display: 'inline-block',
+                      width: '20px',
+                      height: '20px',
+                      backgroundColor: category.color
+                    }"
+                  ></span>
+                </td>
+                <td>
+                  <button
+                    pButton
+                    pRipple
+                    type="button"
+                    icon="pi pi-trash"
+                    class="p-button-rounded p-button-danger p-button-text"
+                    (click)="onDelete(category._id)"
+                  ></button>
+                  <button
+                    pButton
+                    pRipple
+                    type="button"
+                    icon="pi pi-file-edit"
+                    class="p-button-rounded p-button-info p-button-text"
+                    [routerLink]="'/categories/form/' + category._id"
+                  ></button>
+                </td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
       </div>
-    </div>
-  </p-card>
+    </p-card>
+  </div>
 </div>

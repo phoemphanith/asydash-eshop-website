@@ -1,65 +1,67 @@
 <div class="admin__page">
-  <p-card
-    header="Category"
-    [subheader]="isEditMode ? 'Update category' : 'Create category'"
-  >
-    <form
-      [formGroup]="form"
-      (ngSubmit)="onSubmit()"
-      class="formgrid grid"
-      id="admin__form"
-    >
-      <div class="field col-4">
-        <label class="block">Name</label>
-        <input formControlName="name" type="text" pInputText required />
-        <small
-          class="p-error block"
-          *ngIf="
-            form.controls.name.hasError('required') &&
-            form.controls.name.touched
-          "
-        >
-          Name is required
-        </small>
-      </div>
-      <div class="field col-4">
-        <label class="block">Icon</label>
-        <input formControlName="icon" type="text" pInputText required />
-        <small
-          class="p-error block"
-          *ngIf="
-            form.controls.icon.hasError('required') &&
-            form.controls.icon.touched
-          "
-        >
-          Icon is required
-        </small>
-      </div>
-      <div class="field col-1">
-        <label class="block">Color</label>
-        <p-colorPicker formControlName="color"></p-colorPicker>
-      </div>
-      <div class="col-12">
-        <p-toolbar>
-          <div class="p-toolbar-group-left"></div>
-          <div class="p-toolbar-group-right">
-            <p-button
-              [label]="isEditMode ? 'Update' : 'Save'"
-              icon="pi pi-save"
-              styleClass="p-button-success"
-              type="submit"
-              [disabled]="!form.valid"
-            ></p-button>
-            <p-button
-              type="button"
-              label="Back"
-              icon="pi pi-arrow-left"
-              styleClass="p-button-secondary ml-2"
-              routerLink="/categories"
-            ></p-button>
-          </div>
-        </p-toolbar>
-      </div>
-    </form>
-  </p-card>
+  <eshop-admin-page-header
+    title="Category"
+    [subtitle]="isEditMode ? 'Update category' : 'Create category'"
+  ></eshop-admin-page-header>
+  <div class="page__body">
+    <p-card>
+      <form
+        [formGroup]="form"
+        (ngSubmit)="onSubmit()"
+        class="formgrid grid"
+        id="admin__form"
+      >
+        <div class="field col-4">
+          <label class="block">Name</label>
+          <input formControlName="name" type="text" pInputText required />
+          <small
+            class="p-error block"
+            *ngIf="
+              form.controls.name.hasError('required') &&
+              form.controls.name.touched
+            "
+          >
+            Name is required
+          </small>
+        </div>
+        <div class="field col-4">
+          <label class="block">Icon</label>
+          <input formControlName="icon" type="text" pInputText required />
+          <small
+            class="p-error block"
+            *ngIf="
+              form.controls.icon.hasError('required') &&
+              form.controls.icon.touched
+            "
+          >
+            Icon is required
+          </small>
+        </div>
+        <div class="field col-1">
+          <label class="block">Color</label>
+          <p-colorPicker formControlName="color"></p-colorPicker>
+        </div>
+        <div class="col-12">
+          <p-toolbar style="background: none">
+            <div class="p-toolbar-group-left">
+              <p-button
+                [label]="isEditMode ? 'Update' : 'Save'"
+                icon="pi pi-save"
+                styleClass="p-button-success"
+                type="submit"
+                [disabled]="!form.valid"
+              ></p-button>
+              <p-button
+                type="button"
+                label="Back"
+                icon="pi pi-arrow-left"
+                styleClass="p-button-secondary ml-2"
+                routerLink="/categories"
+              ></p-button>
+            </div>
+          </p-toolbar>
+        </div>
+      </form>
+    </p-card>
+  </div>
 </div>

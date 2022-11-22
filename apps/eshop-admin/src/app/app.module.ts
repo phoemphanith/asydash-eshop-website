@@ -16,6 +16,7 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { CategoryListComponent } from './categories/category-list/category-list.component';
 import { CategoryFormComponent } from './categories/category-form/category-form.component';
+import { PageHeaderComponent } from './components/page-header/page-layout.component';
 
 import { CardModule } from 'primeng/card';
 import { ToolbarModule } from 'primeng/toolbar';
@@ -45,6 +46,7 @@ const UI_MODULE = [
     DashboardComponent,
     CategoryListComponent,
     CategoryFormComponent,
+    PageHeaderComponent,
   ],
   imports: [
     BrowserModule,
