@@ -1,0 +1,73 @@
+<div class="admin__page">
+  <eshop-admin-page-header
+    title="User"
+    subtitle="List all users"
+    btnLink="/users/form"
+  ></eshop-admin-page-header>
+  <div class="page__body">
+    <p-card>
+      <div class="p-grid">
+        <div class="p-col-12">
+          <p-table [value]="users">
+            <ng-template pTemplate="header">
+              <tr>
+                <th pSortableColumn="name">
+                  Name <p-sortIcon field="name"></p-sortIcon>
+                </th>
+                <th pSortableColumn="email">
+                  Email <p-sortIcon field="email"></p-sortIcon>
+                </th>
+                <th>Role</th>
+                <th pSortableColumn="country">
+                  Country <p-sortIcon field="country"></p-sortIcon>
+                </th>
+                <th></th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-user>
+              <tr>
+                <td>{{ user.name }}</td>
+                <td>{{ user.email }}</td>
+                <td>
+                  <p-tag
+                    *ngIf="user.isAdmin"
+                    icon="pi pi-user"
+                    severity="success"
+                    value="Admin"
+                    [rounded]="true"
+                  ></p-tag>
+                  <p-tag
+                    *ngIf="!user.isAdmin"
+                    icon="pi pi-user"
+                    severity="info"
+                    value="Member"
+                    [rounded]="true"
+                  ></p-tag>
+                </td>
+                <td>{{ findCountry(user.country) }}</td>
+                <td>
+                  <button
+                    pButton
+                    pRipple
+                    type="button"
+                    icon="pi pi-trash"
+                    class="p-button-rounded p-button-danger p-button-text"
+                    (click)="onDelete(user._id)"
+                  ></button>
+                  <button
+                    pButton
+                    pRipple
+                    type="button"
+                    icon="pi pi-file-edit"
+                    class="p-button-rounded p-button-info p-button-text"
+                    [routerLink]="'/users/form/' + user._id"
+                  ></button>
+                </td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
+      </div>
+    </p-card>
+  </div>
+</div>

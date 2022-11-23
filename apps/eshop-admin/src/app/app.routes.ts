@@ -5,6 +5,8 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ProductFormComponent } from './products/product-form/product-form.component';
 import { ProductListComponent } from './products/product-list/product-list.component';
 import { ShellComponent } from './shared/shell/shell.component';
+import { UserFormComponent } from './users/user-form/user-form.component';
+import { UserListComponent } from './users/user-list/user-list.component';
 
 export const appRoutes: Route[] = [
   {
@@ -19,6 +21,9 @@ export const appRoutes: Route[] = [
       { path: 'products', component: ProductListComponent },
       { path: 'products/form', component: ProductFormComponent },
       { path: 'products/form/:id', component: ProductFormComponent },
+      { path: 'users', component: UserListComponent },
+      { path: 'users/form', component: UserFormComponent },
+      { path: 'users/form/:id', component: UserFormComponent },
     ],
   },
 ];

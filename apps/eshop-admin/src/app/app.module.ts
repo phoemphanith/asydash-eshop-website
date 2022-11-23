@@ -27,6 +27,8 @@ import { InputSwitchModule } from 'primeng/inputswitch';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { EditorModule } from 'primeng/editor';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { TagModule } from 'primeng/tag';
+import { InputMaskModule } from 'primeng/inputmask';
 
 import { ShellComponent } from './shared/shell/shell.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
@@ -36,6 +38,8 @@ import { CategoryFormComponent } from './categories/category-form/category-form.
 import { PageHeaderComponent } from './components/page-header/page-layout.component';
 import { ProductListComponent } from './products/product-list/product-list.component';
 import { ProductFormComponent } from './products/product-form/product-form.component';
+import { UserListComponent } from './users/user-list/user-list.component';
+import { UserFormComponent } from './users/user-form/user-form.component';
 
 const UI_MODULE = [
   CardModule,
@@ -53,6 +57,8 @@ const UI_MODULE = [
   InputTextareaModule,
   EditorModule,
   ProgressSpinnerModule,
+  TagModule,
+  InputMaskModule,
 ];
 
 @NgModule({
@@ -66,6 +72,8 @@ const UI_MODULE = [
     PageHeaderComponent,
     ProductListComponent,
     ProductFormComponent,
+    UserListComponent,
+    UserFormComponent,
   ],
   imports: [
     BrowserModule,
