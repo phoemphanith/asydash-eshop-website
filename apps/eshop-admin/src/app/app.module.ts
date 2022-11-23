@@ -11,12 +11,6 @@ import { CategoryService } from '@eshop/product';
 import { ConfirmationService, MessageService } from 'primeng/api';
 
 import { appRoutes } from './app.routes';
-import { ShellComponent } from './shared/shell/shell.component';
-import { SidebarComponent } from './shared/sidebar/sidebar.component';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { CategoryListComponent } from './categories/category-list/category-list.component';
-import { CategoryFormComponent } from './categories/category-form/category-form.component';
-import { PageHeaderComponent } from './components/page-header/page-layout.component';
 
 import { CardModule } from 'primeng/card';
 import { ToolbarModule } from 'primeng/toolbar';
@@ -26,6 +20,22 @@ import { InputTextModule } from 'primeng/inputtext';
 import { ToastModule } from 'primeng/toast';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ColorPickerModule } from 'primeng/colorpicker';
+import { ImageModule } from 'primeng/image';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { DropdownModule } from 'primeng/dropdown';
+import { InputSwitchModule } from 'primeng/inputswitch';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { EditorModule } from 'primeng/editor';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
+
+import { ShellComponent } from './shared/shell/shell.component';
+import { SidebarComponent } from './shared/sidebar/sidebar.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { CategoryListComponent } from './categories/category-list/category-list.component';
+import { CategoryFormComponent } from './categories/category-form/category-form.component';
+import { PageHeaderComponent } from './components/page-header/page-layout.component';
+import { ProductListComponent } from './products/product-list/product-list.component';
+import { ProductFormComponent } from './products/product-form/product-form.component';
 
 const UI_MODULE = [
   CardModule,
@@ -36,6 +46,13 @@ const UI_MODULE = [
   ToastModule,
   ConfirmDialogModule,
   ColorPickerModule,
+  ImageModule,
+  InputNumberModule,
+  DropdownModule,
+  InputSwitchModule,
+  InputTextareaModule,
+  EditorModule,
+  ProgressSpinnerModule,
 ];
 
 @NgModule({
@@ -47,6 +64,8 @@ const UI_MODULE = [
     CategoryListComponent,
     CategoryFormComponent,
     PageHeaderComponent,
+    ProductListComponent,
+    ProductFormComponent,
   ],
   imports: [
     BrowserModule,

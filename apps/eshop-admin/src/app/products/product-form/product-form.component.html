@@ -1,0 +1,155 @@
+<div class="admin__page">
+  <eshop-admin-page-header
+    title="Product"
+    [subtitle]="isEditMode ? 'Update product' : 'Create product'"
+  ></eshop-admin-page-header>
+  <div class="page__body">
+    <p-card>
+      <div *ngIf="isLoading" style="text-align: center">
+        <p-progressSpinner
+          [style]="{ width: '50px', height: '50px' }"
+          fill="var(--surface-ground)"
+          strokeWidth="4"
+          animationDuration="1s"
+        ></p-progressSpinner>
+      </div>
+      <form
+        *ngIf="!isLoading"
+        [formGroup]="form"
+        (ngSubmit)="onSubmit()"
+        class="formgrid grid p-fluid"
+        id="admin__form"
+      >
+        <div class="field col-4">
+          <label class="block">Name</label>
+          <input formControlName="name" type="text" pInputText required />
+          <small
+            class="p-error block"
+            *ngIf="
+              form.controls.name.hasError('required') &&
+              form.controls.name.touched
+            "
+          >
+            Name is required
+          </small>
+        </div>
+        <div class="field col-4">
+          <label class="block">Price</label>
+          <p-inputNumber
+            formControlName="price"
+            mode="decimal"
+            [useGrouping]="false"
+          ></p-inputNumber>
+          <small
+            class="p-error block"
+            *ngIf="
+              form.controls.price.hasError('required') &&
+              form.controls.price.touched
+            "
+          >
+            Price is required
+          </small>
+        </div>
+        <div class="field col-4">
+          <label class="block">Count In Stock</label>
+          <p-inputNumber
+            formControlName="countInStock"
+            mode="decimal"
+            [useGrouping]="false"
+          ></p-inputNumber>
+          <small
+            class="p-error block"
+            *ngIf="
+              form.controls.countInStock.hasError('required') &&
+              form.controls.countInStock.touched
+            "
+          >
+            Count in stock is required
+          </small>
+        </div>
+        <div class="field col-4">
+          <label class="block">Brand</label>
+          <input formControlName="brand" type="text" pInputText />
+        </div>
+        <div class="field col-4">
+          <label class="block">Category</label>
+          <p-dropdown
+            [options]="objCategories"
+            formControlName="category"
+            optionLabel="name"
+            optionValue="_id"
+            [filter]="true"
+            filterBy="name"
+            [showClear]="true"
+            placeholder="Select a category"
+          ></p-dropdown>
+        </div>
+        <div class="field col-4">
+          <label class="block">Is Feature</label>
+          <p-inputSwitch formControlName="isFeatured"></p-inputSwitch>
+        </div>
+        <div class="field col-12">
+          <label class="block">Short Description</label>
+          <textarea formControlName="description" pInputTextarea></textarea>
+          <small
+            class="p-error block"
+            *ngIf="
+              form.controls.description.hasError('required') &&
+              form.controls.description.touched
+            "
+          >
+            Description is required
+          </small>
+        </div>
+        <div class="field col-12">
+          <label class="block">Description</label>
+          <p-editor
+            formControlName="richDescription"
+            [style]="{ height: '320px' }"
+          ></p-editor>
+        </div>
+        <div class="field col-12">
+          <label class="block">Image</label>
+          <input
+            type="file"
+            class="p-inputtext"
+            (change)="onFileHandler($event)"
+          />
+          <small
+            class="p-error block"
+            *ngIf="
+              form.controls.image.hasError('required') &&
+              form.controls.image.touched
+            "
+          >
+            Image is required
+          </small>
+          <div>
+            <img [src]="imageDisplay" style="width: 120px; margin-top: 5px" />
+          </div>
+        </div>
+
+        <div class="col-12">
+          <p-toolbar>
+            <div class="p-toolbar-group-left">
+              <p-button
+                [label]="isEditMode ? 'Update' : 'Save'"
+                icon="pi pi-save"
+                styleClass="p-button-success"
+                type="submit"
+                [disabled]="!form.valid"
+              ></p-button>
+              <p-button
+                type="button"
+                label="Back"
+                icon="pi pi-arrow-left"
+                styleClass="p-button-secondary ml-2"
+                routerLink="/products"
+              ></p-button>
+            </div>
+          </p-toolbar>
+        </div>
+      </form>
+    </p-card>
+  </div>
+</div>
