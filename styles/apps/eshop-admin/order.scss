@@ -1,0 +1,57 @@
+.order--list {
+  border: 1px solid rgba($color: #000000, $alpha: 0.15);
+  border-radius: 3.5px;
+  padding: 1.25rem 1rem;
+  margin-top: 1.25rem;
+  .order--item {
+    .product-image {
+      img {
+        border: 1px solid rgba($color: #000000, $alpha: 0.15);
+        border-radius: 3.5px;
+        padding: 2.5px;
+        width: 100%;
+        height: 75px;
+        object-fit: cover;
+      }
+    }
+    .product-info {
+      span {
+        display: inline-block;
+        margin-top: 6px;
+        font-weight: 600;
+        color: var(--text-color-secondary);
+      }
+    }
+    .product-subtotal {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-color-secondary);
+    }
+  }
+}
+.order--total-price {
+  background-color: #fafafa;
+  width: 100%;
+  margin: 0;
+  margin-top: 0.75rem;
+  padding: 1rem 0.75rem;
+  border-radius: 5px;
+  .price {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-color-secondary);
+  }
+}
+.order--detail {
+  background-color: #fafafa;
+  margin: 0;
+  margin-top: 1.25rem;
+  padding: 1.25rem 1rem;
+  border-radius: 5px;
+  .detail--item {
+    margin-bottom: 0.75rem;
+    span {
+      line-height: 1.25;
+    }
+  }
+}

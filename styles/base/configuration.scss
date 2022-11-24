@@ -21,6 +21,10 @@ ul {
   @include reset-list;
 }
 
+.p-tag-value {
+  font-size: 12px;
+}
+
 ::-webkit-scrollbar {
   width: 5px;
 }

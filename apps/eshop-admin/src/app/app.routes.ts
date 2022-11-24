@@ -1,6 +1,8 @@
 import { Route } from '@angular/router';
 import { CategoryFormComponent } from './categories/category-form/category-form.component';
 import { CategoryListComponent } from './categories/category-list/category-list.component';
+import { OrderDetailComponent } from './orders/order-detail/order-detail.component';
+import { OrderListComponent } from './orders/order-list/order-list.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ProductFormComponent } from './products/product-form/product-form.component';
 import { ProductListComponent } from './products/product-list/product-list.component';
@@ -24,6 +26,8 @@ export const appRoutes: Route[] = [
       { path: 'users', component: UserListComponent },
       { path: 'users/form', component: UserFormComponent },
       { path: 'users/form/:id', component: UserFormComponent },
+      { path: 'orders', component: OrderListComponent },
+      { path: 'orders/detail/:id', component: OrderDetailComponent },
     ],
   },
 ];

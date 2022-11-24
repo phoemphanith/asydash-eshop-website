@@ -29,6 +29,7 @@ import { EditorModule } from 'primeng/editor';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { TagModule } from 'primeng/tag';
 import { InputMaskModule } from 'primeng/inputmask';
+import { MessagesModule } from 'primeng/messages';
 
 import { ShellComponent } from './shared/shell/shell.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
@@ -40,6 +41,8 @@ import { ProductListComponent } from './products/product-list/product-list.compo
 import { ProductFormComponent } from './products/product-form/product-form.component';
 import { UserListComponent } from './users/user-list/user-list.component';
 import { UserFormComponent } from './users/user-form/user-form.component';
+import { OrderListComponent } from './orders/order-list/order-list.component';
+import { OrderDetailComponent } from './orders/order-detail/order-detail.component';
 
 const UI_MODULE = [
   CardModule,
@@ -59,6 +62,7 @@ const UI_MODULE = [
   ProgressSpinnerModule,
   TagModule,
   InputMaskModule,
+  MessagesModule,
 ];
 
 @NgModule({
@@ -74,6 +78,8 @@ const UI_MODULE = [
     ProductFormComponent,
     UserListComponent,
     UserFormComponent,
+    OrderListComponent,
+    OrderDetailComponent,
   ],
   imports: [
     BrowserModule,

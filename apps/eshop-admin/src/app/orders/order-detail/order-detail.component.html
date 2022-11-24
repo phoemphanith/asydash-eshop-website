@@ -1,0 +1,90 @@
+<div class="admin__page">
+  <eshop-admin-page-header
+    title="Order"
+    subtitle="Order detail"
+  ></eshop-admin-page-header>
+  <div class="page__body">
+    <p-card>
+      <div *ngIf="isLoading" style="text-align: center">
+        <p-progressSpinner
+          [style]="{ width: '50px', height: '50px' }"
+          fill="var(--surface-ground)"
+          strokeWidth="4"
+          animationDuration="1s"
+        ></p-progressSpinner>
+      </div>
+      <div class="grid" *ngIf="!isLoading">
+        <div class="col-12 lg:col-7">
+          <h3>Summary Order</h3>
+          <div class="order--list">
+            <div
+              class="grid order--item"
+              *ngFor="let item of orderObj.orderItems"
+            >
+              <div class="col-3 product-image">
+                <img [src]="item.product.image" />
+              </div>
+              <div class="col-6 product-info">
+                <strong>{{ item.product.name }}</strong> <br />
+                <span>Quantity: {{ item.quantity }}</span> <br />
+                <span>{{ item.product.price | currency }}</span>
+              </div>
+              <div class="col-3 product-subtotal">
+                {{ item.product.price * item.quantity | currency }}
+              </div>
+            </div>
+          </div>
+          <div class="grid order--total-price">
+            <div class="col-9"><strong>Total</strong></div>
+            <div class="col-3">
+              <span class="price">{{ orderObj.totalPrice | currency }}</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 lg:col-5">
+          <h3>Order Detail</h3>
+          <div class="order--detail">
+            <div class="detail--item">
+              <strong>Order Id</strong><br />
+              <span>{{ orderObj._id }}</span>
+            </div>
+            <div class="detail--item">
+              <strong>Order Date</strong><br />
+              <span>{{ orderObj.dateOrdered | date: 'short' }}</span>
+            </div>
+            <div class="detail--item">
+              <strong>Order Address</strong><br />
+              <span>{{ orderObj.shippingAddress1 }}</span> <br />
+              <span>{{ orderObj.shippingAddress2 }}</span> <br />
+              <span>{{ orderObj.city }}, #{{ orderObj.zip }}</span> <br />
+              <span>{{ orderObj.country }}</span>
+            </div>
+            <div class="detail--item">
+              <strong>Customer Name</strong><br />
+              <span>{{ orderObj.user.name }}</span>
+            </div>
+            <div class="detail--item">
+              <strong>Customer Contact</strong><br />
+              <span>{{ orderObj.phone }}</span>
+            </div>
+            <button
+              pButton
+              pRipple
+              type="button"
+              [label]="readStatus(+orderObj.status + 1).label"
+              class="p-button-secondary w-full mt-3"
+              (click)="onChangeStatus(+orderObj.status + 1)"
+              *ngIf="+orderObj.status >= 0 && +orderObj.status < 4"
+            ></button>
+            <p-messages severity="error" *ngIf="+orderObj.status == 4">
+              <ng-template pTemplate>
+                <i class="pi pi-ban"></i>
+                <div class="ml-3">This is order is fail</div>
+              </ng-template>
+            </p-messages>
+          </div>
+        </div>
+      </div>
+    </p-card>
+  </div>
+</div>
