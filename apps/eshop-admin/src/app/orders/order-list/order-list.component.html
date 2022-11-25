@@ -2,12 +2,20 @@
   <eshop-admin-page-header
     title="Order"
     subtitle="List all orders"
+    [canReload]="true"
+    (onRefresh)="onOrderRefresh()"
   ></eshop-admin-page-header>
   <div class="page__body">
     <p-card>
       <div class="p-grid">
         <div class="p-col-12">
-          <p-table [value]="orders">
+          <p-table
+            [value]="orders"
+            [paginator]="true"
+            [rows]="8"
+            [showCurrentPageReport]="true"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+          >
             <ng-template pTemplate="header">
               <tr>
                 <th>Order By</th>

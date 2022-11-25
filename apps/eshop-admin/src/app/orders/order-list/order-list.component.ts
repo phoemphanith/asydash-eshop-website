@@ -49,6 +49,10 @@ export class OrderListComponent {
     });
   }
 
+  onOrderRefresh() {
+    this._fetchData();
+  }
+
   private _fetchData() {
     this.service.getOrders().subscribe((res: any) => {
       this.orders = res.result;

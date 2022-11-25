@@ -11,5 +11,12 @@
       styleClass="p-button-success"
       [routerLink]="btnLink"
     ></p-button>
+    <p-button
+      *ngIf="canReload"
+      label="Refresh"
+      icon="pi pi-refresh"
+      styleClass="p-button-secondary"
+      (click)="refresh()"
+    ></p-button>
   </div>
 </div>
