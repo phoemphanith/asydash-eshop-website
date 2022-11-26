@@ -2,7 +2,7 @@ import { Location } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { User, UserService } from '@eshop/user-auth';
+import { Auth, AuthService, User, UserService } from '@eshop/user-auth';
 import { MessageService } from 'primeng/api';
 import * as CountryData from 'i18n-iso-countries';
 
@@ -33,7 +33,8 @@ export class UserFormComponent {
     private service: UserService,
     private messageService: MessageService,
     private location: Location,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private auth: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -60,6 +61,14 @@ export class UserFormComponent {
       this._updateItem(item);
     } else {
       this._addItem(item);
+    }
+
+    if (this.userForm.isAdmin.value) {
+      this.auth.authSubject.next(<Auth>{
+        id: this.currentId,
+        name: this.userForm.name.value,
+        email: this.userForm.email.value,
+      });
     }
   }
 

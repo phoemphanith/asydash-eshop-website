@@ -1,4 +1,5 @@
 import { Route } from '@angular/router';
+import { AuthGuardService as AuthGuard } from '@eshop/user-auth';
 import { CategoryFormComponent } from './categories/category-form/category-form.component';
 import { CategoryListComponent } from './categories/category-list/category-list.component';
 import { OrderDetailComponent } from './orders/order-detail/order-detail.component';
@@ -14,6 +15,7 @@ export const appRoutes: Route[] = [
   {
     path: '',
     component: ShellComponent,
+    canActivate: [AuthGuard],
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'dashboard', component: DashboardComponent },

@@ -1,0 +1,18 @@
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 1rem;
+  position: relative;
+  img {
+    height: 45px;
+    margin-right: 0.25rem;
+  }
+  &__name {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: $secondary-color;
+    padding: 6px 0;
+    border-bottom: 1px solid #bc082f;
+  }
+}

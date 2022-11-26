@@ -1,0 +1,80 @@
+<div class="login__register">
+  <div class="login__register--panel">
+    <div class="grid">
+      <div class="col-12 md:col-6">
+        <div class="login__register--form p-3">
+          <div class="logo">
+            <img src="/assets/logo.png" alt="" />
+            <span class="logo__name">Asydash Shop</span>
+          </div>
+          <div class="form__layout m-3 mt-6">
+            <h3>Welcome to admin</h3>
+            <p>Please enter your information!</p>
+            <form
+              [formGroup]="form"
+              (ngSubmit)="onSubmit()"
+              class="formgrid grid p-fluid mt-4 pr-5"
+            >
+              <div class="field col-12">
+                <span class="p-input-icon-left">
+                  <i class="pi pi-user"></i>
+                  <input
+                    formControlName="email"
+                    type="text"
+                    pInputText
+                    placeholder="Email"
+                  />
+                </span>
+                <small *ngIf="isSubmit" class="p-error">
+                  <span *ngIf="formControl.email.hasError('required')">
+                    Email is required
+                  </span>
+                  <span *ngIf="formControl.email.hasError('email')">
+                    Email is invalid
+                  </span>
+                </small>
+              </div>
+              <div class="field col-12">
+                <span class="p-input-icon-left">
+                  <i class="pi pi-key"></i>
+                  <input
+                    formControlName="password"
+                    type="password"
+                    pInputText
+                    placeholder="Password"
+                  />
+                </span>
+                <small
+                  class="p-error"
+                  *ngIf="isSubmit && formControl.password.hasError('required')"
+                >
+                  Password is required
+                </small>
+              </div>
+              <div class="col-12">
+                <p-button
+                  type="submit"
+                  label="Login"
+                  [icon]="
+                    'pi ' +
+                    (isLoading ? 'pi-spin pi-spinner' : 'pi-arrow-right')
+                  "
+                  iconPos="right"
+                ></p-button>
+              </div>
+              <div class="col-12 mt-2">
+                <small class="p-error" *ngIf="authError">{{ authError }}</small>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="hidden col-12 md:col-6 md:block">
+        <div class="thumbnail">
+          <div class="shap"></div>
+          <div class="backdrop"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -2,9 +2,10 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { UiModule } from '@eshop/ui';
+import { JwtInterceptor, UserAuthModule } from '@eshop/user-auth';
 
 import { AppComponent } from './app.component';
 import { CategoryService } from '@eshop/product';
@@ -89,9 +90,15 @@ const UI_MODULE = [
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    UserAuthModule,
     ...UI_MODULE,
   ],
-  providers: [CategoryService, MessageService, ConfirmationService],
+  providers: [
+    CategoryService,
+    MessageService,
+    ConfirmationService,
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

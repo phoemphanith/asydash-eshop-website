@@ -17,24 +17,6 @@ $sidebar-width: 250px;
     display: flex;
     flex-direction: column;
     box-shadow: 2px 0 3px rgba($color: #333, $alpha: 0.2);
-    .logo {
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      margin-bottom: 1rem;
-      position: relative;
-      img {
-        height: 45px;
-        margin-right: 0.25rem;
-      }
-      &__name {
-        font-size: 1.2rem;
-        font-weight: 700;
-        color: $secondary-color;
-        padding: 6px 0;
-        border-bottom: 1px solid #bc082f;
-      }
-    }
     .links {
       flex-grow: 1;
       overflow-x: hidden;
@@ -119,12 +101,7 @@ $sidebar-width: 250px;
       width: 100%;
       height: 10rem;
       background: rgb(2, 0, 36);
-      background: linear-gradient(
-        74deg,
-        rgba(2, 0, 36, 1) 0%,
-        rgba(0, 107, 163, 1) 64%,
-        rgba(0, 138, 255, 1) 100%
-      );
+      background: $main-gradient-color;
       color: #fff;
       padding: 4rem 3rem;
       display: flex;

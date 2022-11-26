@@ -35,9 +35,11 @@
   <div class="profile">
     <img src="/assets/users/male-07.jpg" alt="" />
     <div class="profile__info">
-      <span class="name">Asydash</span>
-      <span class="email">asydash@dev.com</span>
+      <span class="name">{{ username }}</span>
+      <span class="email">{{ email }}</span>
     </div>
-    <button class="btn__logout"><i class="pi pi-sign-out"></i></button>
+    <button class="btn__logout" (click)="onLogout()">
+      <i class="pi pi-sign-out"></i>
+    </button>
   </div>
 </div>
