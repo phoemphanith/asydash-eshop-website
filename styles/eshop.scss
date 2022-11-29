@@ -3,6 +3,7 @@
 @import './base/colors.scss';
 @import './base/fonts.scss';
 @import './base/mixins.scss';
+@import './base/animation.scss';
 
 // *Third Libraries
 @import '~primeicons/primeicons.css';
@@ -12,8 +13,6 @@
 @import './base/configuration.scss';
 
 // *Pages
-@import './apps/eshop/pages/home-page.scss';
-@import './apps/eshop/pages/product-list-page.scss';
 
 // *Shared
 @import './apps/eshop/shared/header.scss';
@@ -21,3 +20,19 @@
 
 // *Libs
 @import './libs/ui/ui.scss';
+
+#eshop-app {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 0.5px);
+  overflow-x: hidden;
+  overflow: hidden;
+}
+#main-content {
+  flex-grow: 1;
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0;
+}

@@ -1,1 +1,60 @@
-<p>header works!</p>
+<div id="header">
+  <div class="container">
+    <div class="grid">
+      <div class="col-3">
+        <div class="logo">
+          <img src="/assets/logo.png" alt="" />
+          <span class="logo__name">Asydash Shop</span>
+        </div>
+      </div>
+      <div class="col-3">
+        <product-search></product-search>
+      </div>
+      <div class="col-3 col-offset-1">
+        <div class="navbar">
+          <ul class="navbar--list">
+            <li>
+              <a class="navbar--item" routerLink="/" routerLinkActive="active">
+                Home
+              </a>
+            </li>
+            <li>
+              <a
+                class="navbar--item"
+                routerLink="/products"
+                routerLinkActive="active"
+              >
+                Products
+              </a>
+            </li>
+            <li>
+              <a
+                class="navbar--item"
+                routerLink="/contact"
+                routerLinkActive="active"
+              >
+                Contact
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-2">
+        <button
+          pButton
+          pRipple
+          type="button"
+          icon="pi pi-user"
+          class="p-button-rounded p-button-secondary p-button-text"
+        ></button>
+        <button
+          pButton
+          pRipple
+          type="button"
+          icon="pi pi-shopping-cart"
+          class="p-button-rounded p-button-secondary p-button-text"
+        ></button>
+      </div>
+    </div>
+  </div>
+</div>

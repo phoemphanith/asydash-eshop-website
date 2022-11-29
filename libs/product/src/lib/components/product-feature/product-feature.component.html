@@ -1,0 +1,8 @@
+<div class="product__feature">
+  <h3>Feature Product</h3>
+  <div class="grid gap-3">
+    <div class="col-3" *ngFor="let product of products">
+      <product-item [product]="product"></product-item>
+    </div>
+  </div>
+</div>

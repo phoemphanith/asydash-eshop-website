@@ -1,0 +1,12 @@
+<div class="product--item">
+  <img [src]="product.image" alt="" />
+  <div class="product--content">
+    <span class="product--price">{{ product.price | currency }}</span>
+    <h4>{{ product.name }}</h4>
+    <p *ngIf="product.description.length <= 33">{{ product.description }}</p>
+    <p *ngIf="product.description.length > 33">
+      {{ product.description.slice(0, 33) }} ...
+    </p>
+    <button type="button">Add to Cart</button>
+  </div>
+</div>

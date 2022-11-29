@@ -1,0 +1,14 @@
+<div class="category__section">
+  <h3>Filter by</h3>
+  <div class="grid gap-3">
+    <div class="col-2" *ngFor="let category of categories">
+      <div
+        class="category--item"
+        [ngStyle]="{ backgroundColor: category.color }"
+      >
+        <i class="pi pi-{{ category.icon }}"></i>
+        <h4>{{ category.name }}</h4>
+      </div>
+    </div>
+  </div>
+</div>
