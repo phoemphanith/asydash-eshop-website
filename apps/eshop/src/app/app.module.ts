@@ -8,7 +8,6 @@ import { BadgeModule } from 'primeng/badge';
 
 import { AppComponent } from './app.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
-import { ProductListComponent } from './pages/product-list/product-list.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { UiModule } from '@eshop/ui';
@@ -18,7 +17,6 @@ import { ProductModule } from '@eshop/product';
   declarations: [
     AppComponent,
     HomepageComponent,
-    ProductListComponent,
     HeaderComponent,
     FooterComponent,
   ],

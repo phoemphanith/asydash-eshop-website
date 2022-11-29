@@ -1,0 +1,32 @@
+<div class="product__list">
+  <div class="grid">
+    <div class="col-3">
+      <div class="category__product">
+        <h3>Filter by</h3>
+        <ul>
+          <li>
+            <a (click)="onSelectCategory()">
+              <i class="pi pi-filter"></i><span>All Products</span>
+            </a>
+          </li>
+          <li *ngFor="let category of categories">
+            <a
+              (click)="onSelectCategory(category._id)"
+              [ngClass]="{ active: category.active }"
+            >
+              <i class="pi pi-{{ category.icon }}"></i>
+              <span>{{ category.name }}</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-9">
+      <div class="grid">
+        <div class="col-4" *ngFor="let product of products">
+          <product-item [product]="product"></product-item>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
