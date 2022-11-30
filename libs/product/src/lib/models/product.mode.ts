@@ -10,4 +10,5 @@ export interface Product {
   rating?: number;
   numReviews?: number;
   isFeatured: boolean;
+  images: any;
 }

@@ -1,0 +1,17 @@
+<div class="product__gallery" *ngIf="!isLoading">
+  <div
+    class="main-image"
+    [ngStyle]="{
+      'background-image': 'url(' + imageSelected.src + ')'
+    }"
+  ></div>
+  <ul class="image--list">
+    <li
+      class="image--item"
+      *ngFor="let image of objImages"
+      [ngStyle]="{ 'background-image': 'url(' + image.src + ')' }"
+      [ngClass]="{ active: image.active }"
+      (click)="onSelectImage(image)"
+    ></li>
+  </ul>
+</div>

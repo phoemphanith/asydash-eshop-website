@@ -7,3 +7,10 @@
 @mixin shadow-box {
   box-shadow: 1px 1px 6px rgba($color: #333, $alpha: 0.2);
 }
+
+@mixin card-container {
+  background-color: #fff;
+  border: 1px solid rgba($color: #333, $alpha: 0.3);
+  border-radius: 17px;
+  overflow: hidden;
+}

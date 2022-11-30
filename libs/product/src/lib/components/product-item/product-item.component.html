@@ -1,12 +1,24 @@
-<div class="product--item">
-  <img [src]="product.image" alt="" />
+<div class="product--item" [ngClass]="{ active: isActive }">
+  <img
+    [src]="product.image"
+    alt=""
+    (click)="onProductSelect(product._id)"
+    (mousemove)="isActive = true"
+    (mouseleave)="isActive = false"
+  />
   <div class="product--content">
     <span class="product--price">{{ product.price | currency }}</span>
-    <h4>{{ product.name }}</h4>
+    <h4
+      (click)="onProductSelect(product._id)"
+      (mousemove)="isActive = true"
+      (mouseleave)="isActive = false"
+    >
+      {{ product.name }}
+    </h4>
     <p *ngIf="product.description.length <= 33">{{ product.description }}</p>
     <p *ngIf="product.description.length > 33">
       {{ product.description.slice(0, 33) }} ...
     </p>
-    <button type="button">Add to Cart</button>
+    <button type="button" (click)="onAddCart()">Add to Cart</button>
   </div>
 </div>
