@@ -1,0 +1,52 @@
+<div class="cart__wrapper">
+  <div class="grid">
+    <div class="col-8">
+      <div class="cart">
+        <div class="cart__header">
+          <div class="cart__header--title">
+            <h2>Product List</h2>
+            <p class="cart__des">
+              We have <strong>{{ CountCart }}</strong> items
+            </p>
+          </div>
+          <div class="cart__header--option">
+            <button
+              pButton
+              pRipple
+              type="button"
+              icon="pi pi-shopping-cart"
+              class="p-button-rounded p-button-secondary p-button-outlined"
+              routerLink="/products"
+            ></button>
+            <button
+              pButton
+              pRipple
+              type="button"
+              icon="pi pi-times"
+              label="Clear"
+              class="p-button-outlined p-button-rounded p-button-danger"
+              (click)="onClearCart()"
+            ></button>
+          </div>
+        </div>
+        <div class="cart__list" *ngIf="CountCart > 0">
+          <cart-item
+            *ngFor="let cart of cartList"
+            [cart]="cart"
+            (updateQuantity)="onUpdateCart($event)"
+            (removeCartItem)="onRemoveCart($event)"
+          ></cart-item>
+        </div>
+        <p-message
+          *ngIf="CountCart === 0"
+          severity="warn"
+          text="Your cart list is empty."
+          styleClass="w-full my-5"
+        ></p-message>
+      </div>
+    </div>
+    <div class="col-4">
+      <cart-summery [carts]="cartList"></cart-summery>
+    </div>
+  </div>
+</div>

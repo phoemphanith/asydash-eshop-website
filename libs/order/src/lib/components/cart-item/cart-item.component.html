@@ -1,0 +1,26 @@
+<div class="cart__item">
+  <div class="grid">
+    <div class="col-6 cart__item--product">
+      <img [src]="cart.productImage" alt="" />
+      <div class="product--detail">
+        <h3>{{ cart.productName }}</h3>
+        <p>{{ cart.productPrice | currency }}</p>
+        <p-inputNumber
+          [(ngModel)]="cart.quantity"
+          [showButtons]="true"
+          inputId="stacked"
+          (onInput)="onUpdateQuantity()"
+        ></p-inputNumber>
+      </div>
+    </div>
+    <div class="col-3 col-offset-3 cart__item--option">
+      <p class="mb-2">
+        Total Price:
+        <strong>{{ cart.quantity * cart.productPrice | currency }}</strong>
+      </p>
+      <button type="button" class="remove-btn" (click)="onRemoveItem()">
+        Remove
+      </button>
+    </div>
+  </div>
+</div>

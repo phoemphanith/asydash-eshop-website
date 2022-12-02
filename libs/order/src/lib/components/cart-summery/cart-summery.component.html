@@ -1,0 +1,147 @@
+<div class="cart">
+  <form [formGroup]="orderForm" (ngSubmit)="submitOrder()">
+    <div class="cart__information">
+      <h3 class="mb-2">Information</h3>
+      <div class="grid p-fluid formgrid">
+        <div class="col-12 field">
+          <p-dropdown
+            formControlName="country"
+            [options]="objCountry"
+            optionLabel="name"
+            optionValue="_id"
+            [filter]="true"
+            filterBy="name"
+            [showClear]="true"
+            placeholder="Select a country"
+            [panelStyle]="{ width: 'calc(100% - 25px)' }"
+          ></p-dropdown>
+          <small
+            class="p-error"
+            *ngIf="orderForm.controls.country.hasError('required') && isSubmit"
+          >
+            Country is required
+          </small>
+        </div>
+        <div class="col-12 field">
+          <span class="p-input-icon-left">
+            <i class="pi pi-map"></i>
+            <input
+              type="text"
+              pInputText
+              formControlName="shippingAddress1"
+              placeholder="Shipping Address 1"
+            />
+          </span>
+          <small
+            class="p-error"
+            *ngIf="
+              orderForm.controls.shippingAddress1.hasError('required') &&
+              isSubmit
+            "
+          >
+            Shipping address 1 is required
+          </small>
+        </div>
+        <div class="col-12 field">
+          <span class="p-input-icon-left">
+            <i class="pi pi-map"></i>
+            <input
+              type="text"
+              pInputText
+              formControlName="shippingAddress2"
+              placeholder="Shipping Address 2"
+            />
+          </span>
+        </div>
+        <div class="col-6 field">
+          <span class="p-input-icon-left">
+            <i class="pi pi-map-marker"></i>
+            <input
+              type="text"
+              pInputText
+              formControlName="city"
+              placeholder="City"
+            />
+          </span>
+          <small
+            class="p-error"
+            *ngIf="orderForm.controls.city.hasError('required') && isSubmit"
+          >
+            City is required
+          </small>
+        </div>
+        <div class="col-6 field">
+          <span class="p-input-icon-left">
+            <i class="pi pi-hashtag"></i>
+            <input
+              type="text"
+              pInputText
+              formControlName="zip"
+              placeholder="Zip"
+            />
+          </span>
+          <small
+            class="p-error"
+            *ngIf="orderForm.controls.zip.hasError('required') && isSubmit"
+          >
+            Zip is required
+          </small>
+        </div>
+        <div class="col-12 field">
+          <span class="p-input-icon-left">
+            <i class="pi pi-phone"></i>
+            <input
+              type="text"
+              pInputText
+              formControlName="phone"
+              placeholder="Phone Number"
+            />
+          </span>
+          <small
+            class="p-error"
+            *ngIf="
+              orderForm.controls.shippingAddress1.hasError('required') &&
+              isSubmit
+            "
+          >
+            Phone number is required
+          </small>
+        </div>
+      </div>
+    </div>
+    <div class="cart__summery">
+      <h3 class="mb-2">Summery</h3>
+      <div class="cart__summery--top">
+        <div class="grid">
+          <div class="col-4">Subtotal</div>
+          <div class="col-8 text-right">
+            <strong>{{ TotalPrice | currency }}</strong>
+          </div>
+          <div class="col-4">Tax</div>
+          <div class="col-8 text-right">
+            <strong>{{ tax | currency }}</strong>
+          </div>
+        </div>
+      </div>
+      <hr />
+      <div class="cart__summery--bottom">
+        <div class="grid">
+          <div class="col-4">Total</div>
+          <div class="col-8 text-right">
+            <strong>{{
+              (TotalPrice > 0 ? TotalPrice + tax : 0) | currency
+            }}</strong>
+          </div>
+        </div>
+      </div>
+      <button
+        pButton
+        pRipple
+        type="submit"
+        label="Process Order"
+        icon="pi pi-shopping-cart"
+        class="p-button-rounded p-button-secondary w-full mt-3"
+      ></button>
+    </div>
+  </form>
+</div>

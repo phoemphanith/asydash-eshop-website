@@ -1,0 +1,44 @@
+@mixin hover-transition {
+  transition: all 0.2s ease-in-out;
+}
+.cart__btn {
+  background: none;
+  border: none;
+  display: inline-block;
+  height: 3rem;
+  padding: 0.75rem 0;
+  padding-top: 0.75rem;
+  cursor: pointer;
+  .pi {
+    float: left;
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: #fff;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    background-color: var(--surface-300);
+    padding: 3px 0.5rem;
+    background-color: $primary-color-dark;
+    @include hover-transition();
+  }
+  span {
+    display: inline-block;
+    padding: 3px 0.5rem;
+    height: 100%;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border: 1px solid $primary-color-dark;
+    color: $primary-color-dark;
+    font-weight: 600;
+    @include hover-transition();
+  }
+  &:hover {
+    .pi {
+      background-color: $primary-color;
+    }
+    span {
+      color: $primary-color;
+      border-color: $primary-color;
+    }
+  }
+}

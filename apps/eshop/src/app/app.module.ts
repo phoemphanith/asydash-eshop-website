@@ -12,6 +12,7 @@ import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { UiModule } from '@eshop/ui';
 import { ProductModule } from '@eshop/product';
+import { OrderModule } from '@eshop/order';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { ProductModule } from '@eshop/product';
     UiModule,
     ProductModule,
     HttpClientModule,
+    OrderModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

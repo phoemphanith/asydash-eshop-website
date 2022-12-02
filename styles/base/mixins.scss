@@ -14,3 +14,10 @@
   border-radius: 17px;
   overflow: hidden;
 }
+
+@mixin summery-card {
+  width: 100%;
+  border-radius: 5px;
+  background-color: var(--gray-50);
+  padding: 0.5rem 1rem;
+}

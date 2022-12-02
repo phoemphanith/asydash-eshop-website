@@ -25,7 +25,12 @@
           </div>
           <span class="p-buttonset">
             <button pButton pRipple label="Buy Now"></button>
-            <button pButton pRipple icon="pi pi-cart-plus"></button>
+            <button
+              pButton
+              pRipple
+              icon="pi pi-cart-plus"
+              (click)="onAddToCart()"
+            ></button>
           </span>
         </div>
       </div>
