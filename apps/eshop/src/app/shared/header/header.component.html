@@ -28,25 +28,32 @@
               </a>
             </li>
             <li>
-              <a
-                class="navbar--item"
-                routerLink="/contact"
-                routerLinkActive="active"
-              >
-                Contact
-              </a>
+              <a class="navbar--item"> Contact </a>
             </li>
           </ul>
         </div>
       </div>
       <div class="col-2">
         <button
+          *ngIf="!isUserLogin"
           pButton
           pRipple
           type="button"
           icon="pi pi-user"
-          class="p-button-rounded p-button-secondary p-button-text"
+          class="p-button-rounded p-button-secondary p-button-text mr-2"
+          routerLink="/login"
         ></button>
+        <button
+          *ngIf="isUserLogin"
+          pButton
+          pRipple
+          type="button"
+          icon="pi pi-user"
+          class="p-button-rounded p-button-secondary p-button-text mr-2"
+          [ngStyle]="{ color: '#af2900' }"
+          (click)="menu.toggle($event)"
+        ></button>
+        <p-menu #menu [popup]="true" [model]="items"></p-menu>
         <cart-icon></cart-icon>
       </div>
     </div>

@@ -15,8 +15,12 @@ import { CartItemComponent } from './components/cart-item/cart-item.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CartSummeryComponent } from './components/cart-summery/cart-summery.component';
+import { SuccessComponent } from './pages/success/success.component';
 
-const routes: Route[] = [{ path: 'carts', component: CartComponent }];
+const routes: Route[] = [
+  { path: 'carts', component: CartComponent },
+  { path: 'success', component: SuccessComponent },
+];
 
 @NgModule({
   imports: [
@@ -37,6 +41,7 @@ const routes: Route[] = [{ path: 'carts', component: CartComponent }];
     CartComponent,
     CartItemComponent,
     CartSummeryComponent,
+    SuccessComponent,
   ],
   exports: [CartIconComponent],
 })

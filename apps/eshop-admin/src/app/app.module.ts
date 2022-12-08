@@ -44,6 +44,8 @@ import { UserListComponent } from './users/user-list/user-list.component';
 import { UserFormComponent } from './users/user-form/user-form.component';
 import { OrderListComponent } from './orders/order-list/order-list.component';
 import { OrderDetailComponent } from './orders/order-detail/order-detail.component';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 
 const UI_MODULE = [
   CardModule,
@@ -91,6 +93,8 @@ const UI_MODULE = [
     ReactiveFormsModule,
     BrowserAnimationsModule,
     UserAuthModule,
+    StoreModule.forRoot([]),
+    EffectsModule.forRoot([]),
     ...UI_MODULE,
   ],
   providers: [

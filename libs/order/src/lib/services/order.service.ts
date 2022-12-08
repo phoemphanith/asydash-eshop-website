@@ -19,6 +19,10 @@ export class OrderService {
     return this.http.get<Order>(`${this.apiUrl}/${itemId}`);
   }
 
+  createOrder(order: any): Observable<Order> {
+    return this.http.post<Order>(this.apiUrl, order);
+  }
+
   updateOrderStatus(
     orderItem: { status: string },
     orderId: string

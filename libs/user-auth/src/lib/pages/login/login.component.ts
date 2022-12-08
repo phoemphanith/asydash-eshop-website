@@ -4,6 +4,8 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { LocalStorageService } from '../../services/localstorage.service';
+import { UserService } from '../../services/user.service';
+import { UsersEffects } from '../../state/users.effects';
 
 @Component({
   selector: 'user-login',
@@ -22,7 +24,8 @@ export class LoginComponent {
     private formBuilder: FormBuilder,
     private service: AuthService,
     private router: Router,
-    private local: LocalStorageService
+    private local: LocalStorageService,
+    private userService: UserService
   ) {}
 
   onSubmit() {
@@ -41,6 +44,7 @@ export class LoginComponent {
         this.isLoading = false;
         this.router.navigate(['/']);
         this.local.setToken(res.result.token);
+        this.userService.initAppSession();
       },
       (error: HttpErrorResponse) => {
         this.isLoading = false;

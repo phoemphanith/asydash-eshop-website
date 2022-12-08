@@ -1,4 +1,5 @@
-<div id="eshop-app">
+<p-toast position="bottom-center" key="bc"></p-toast>
+<div id="eshop-app" *ngIf="currentRoute != '/login'">
   <eshop-header></eshop-header>
   <div id="main-content">
     <div class="container">
@@ -7,3 +8,7 @@
   </div>
   <eshop-footer></eshop-footer>
 </div>
+
+<section *ngIf="currentRoute == '/login'">
+  <router-outlet></router-outlet>
+</section>

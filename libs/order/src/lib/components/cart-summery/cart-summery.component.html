@@ -99,10 +99,7 @@
           </span>
           <small
             class="p-error"
-            *ngIf="
-              orderForm.controls.shippingAddress1.hasError('required') &&
-              isSubmit
-            "
+            *ngIf="orderForm.controls.phone.hasError('required') && isSubmit"
           >
             Phone number is required
           </small>

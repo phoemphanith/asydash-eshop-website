@@ -17,16 +17,12 @@ export class AuthGuardService implements CanActivate {
     const localToken = this.local.getToken();
     if (localToken) {
       const tokenDecode: any = JSON.parse(atob(localToken.split('.')[1]));
-      if (tokenDecode.isAdmin && this._isExpiredToken(+tokenDecode.exp))
+      if (tokenDecode.isAdmin && this.local.isTokenExpired(+tokenDecode.exp))
         return true;
     }
 
     this.router.navigate(['/login']);
     this.local.removeToken();
     return false;
-  }
-
-  private _isExpiredToken(timestamp: number) {
-    return Math.floor(new Date().getTime() / 1000) <= timestamp;
   }
 }
