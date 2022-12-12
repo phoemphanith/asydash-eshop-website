@@ -1,0 +1,43 @@
+.search {
+  &__product {
+    &--input {
+      display: flex;
+      align-items: center;
+      background-color: var(--surface-b);
+      width: 100%;
+      padding: 0.25rem 0.75rem;
+      border-radius: 17px;
+      border: 1px solid rgba($color: #333, $alpha: 0.25);
+      color: var(--text-color-secondary);
+      input {
+        margin-left: 0.5rem;
+        height: 100%;
+        width: 100%;
+        padding: 0.25rem;
+        background: none;
+        border: none;
+        outline: none;
+      }
+    }
+  }
+
+  &__order {
+    &--input {
+      @extend .search__product--input;
+      .pi {
+        cursor: pointer;
+        &:hover {
+          color: $primary-color-dark;
+        }
+        &:last-child {
+          margin-left: 6px;
+          background-color: $primary-color-dark;
+          color: #fff;
+          font-size: 14px;
+          padding: 3px;
+          border-radius: 50%;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,164 @@
+.account {
+  &__wrapper {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  &__sidebar {
+    .card {
+      background-color: #fff;
+      padding: 0.5rem 0.75rem;
+      border-radius: 10px;
+    }
+    .user__profile {
+      display: flex;
+      align-items: center;
+      grid-column: 1/3;
+      &--img {
+        width: 40px;
+        height: 40px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 1px solid rgba($color: #000000, $alpha: 0.5);
+        display: inline-block;
+      }
+      &--info {
+        padding: 5px;
+        margin-left: 0.5rem;
+        flex-grow: 1;
+        p {
+          &:first-child {
+            font-size: 1rem;
+            font-size: 600;
+          }
+          &:last-child {
+            opacity: 0.9;
+            font-weight: 500;
+          }
+        }
+      }
+      button {
+        width: 30px;
+        height: 30px !important;
+        .pi {
+          font-size: 12px;
+        }
+      }
+    }
+    .navbar {
+      margin-top: 1rem;
+      ul {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem 0;
+        li {
+          margin-bottom: 10px;
+          &:last-child {
+            margin-bottom: 0;
+          }
+          a {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: $primary-color-dark;
+            font-weight: 600;
+            border-radius: 11px;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            .pi {
+              margin-right: 0.5rem;
+              float: left;
+            }
+            transition: color 0.3s ease-in-out;
+            &::before {
+              content: '';
+              position: absolute;
+              z-index: -2;
+              left: 0;
+              bottom: 0;
+              width: 100%;
+              height: 100%;
+              opacity: 0;
+              background-color: $primary-color-dark;
+              transition: opacity 0.3s ease-in-out;
+            }
+            &.active {
+              color: #fff;
+              &::before {
+                opacity: 1;
+                animation: leftToRight 0.4s;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &__main {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 1rem;
+    overflow-x: hidden;
+    .dashboard {
+      &__card {
+        padding: 1.25rem;
+        color: rgba($color: #fff, $alpha: 0.9);
+        position: relative;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 0 10px 0 rgba($color: $secondary-color, $alpha: 0.5);
+        cursor: pointer;
+        background-color: $secondary-color;
+        background-image: linear-gradient(
+          135deg,
+          $secondary-color-dark 0%,
+          $secondary-color 100%
+        );
+        transition: transform 0.2s ease-in-out;
+        h2 {
+          font-weight: 600;
+          font-size: 1.25rem;
+        }
+        p {
+          font-size: 2.5rem;
+          font-weight: 300;
+        }
+        .pi {
+          position: absolute;
+          bottom: -40%;
+          right: 0;
+          font-size: 9em;
+          transform: rotate(-25deg);
+          opacity: 0.1;
+          transition: font-size 0.2s ease-in-out;
+        }
+
+        &.pending {
+          background-color: #fba86f;
+          background-image: linear-gradient(135deg, #fa8e42 0%, #fba86f 100%);
+          box-shadow: 0 0 10px 0 rgba($color: #fba86f, $alpha: 0.5);
+        }
+        &.confirm {
+          background-color: #06b6d4;
+          background-image: linear-gradient(135deg, #059bb4 0%, #06b6d4 100%);
+          box-shadow: 0 0 10px 0 rgba($color: #06b6d4, $alpha: 0.5);
+        }
+        &.complete {
+          background-color: #14b8a6;
+          background-image: linear-gradient(135deg, #119c8d 0%, #14b8a6 100%);
+          box-shadow: 0 0 10px 0 rgba($color: #14b8a6, $alpha: 0.5);
+        }
+
+        &:hover {
+          transform: scale(1.01);
+          .pi {
+            font-size: 9.3em;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,32 @@
+<p-toast position="bottom-center" key="bc"></p-toast>
+<div class="grid">
+  <div class="col-12">
+    <div class="menubar">
+      <div class="grid">
+        <div class="col-12">
+          <div class="menu__button">
+            <button
+              type="button"
+              routerLink="account-info"
+              routerLinkActive="active"
+              class="py-2"
+            >
+              <i class="pi pi-user mr-2"></i>Information
+            </button>
+            <button
+              type="button"
+              routerLink="account-security"
+              routerLinkActive="active"
+              class="py-2"
+            >
+              <i class="pi pi-lock mr-2"></i>Security
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-12">
+    <router-outlet></router-outlet>
+  </div>
+</div>

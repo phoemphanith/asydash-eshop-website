@@ -1,0 +1,34 @@
+<div class="grid" *ngIf="model; else loading">
+  <div class="col-6">
+    <div class="dashboard__card pending">
+      <h2>Pending Order</h2>
+      <p>{{ model.countPending }}</p>
+      <i class="pi pi-cart-plus"></i>
+    </div>
+  </div>
+  <div class="col-6">
+    <div class="dashboard__card confirm">
+      <h2>Confirm Order</h2>
+      <p>{{ model.countConfirm }}</p>
+      <i class="pi pi-box"></i>
+    </div>
+  </div>
+  <div class="col-6">
+    <div class="dashboard__card shipping">
+      <h2>Shipping Order</h2>
+      <p>{{ model.countShipping }}</p>
+      <i class="pi pi-truck"></i>
+    </div>
+  </div>
+  <div class="col-6">
+    <div class="dashboard__card complete">
+      <h2>Complete Order</h2>
+      <p>{{ model.countComplete }}</p>
+      <i class="pi pi-check-square"></i>
+    </div>
+  </div>
+</div>
+
+<ng-template #loading>
+  <div class="custom-loader"></div>
+</ng-template>

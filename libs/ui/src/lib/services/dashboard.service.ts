@@ -21,4 +21,10 @@ export class DashboardService {
   getSaleCount(): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/orders/get/totalsales`);
   }
+
+  getUserOrderCount(userId: string): Observable<any> {
+    return this.http.get<any>(
+      `${this.apiUrl}/orders/get/userorders/${userId}/count`
+    );
+  }
 }

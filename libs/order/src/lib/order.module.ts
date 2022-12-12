@@ -16,6 +16,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CartSummeryComponent } from './components/cart-summery/cart-summery.component';
 import { SuccessComponent } from './pages/success/success.component';
+import { OrderTransactionComponent } from './components/order-transaction/order-transaction.component';
 
 const routes: Route[] = [
   { path: 'carts', component: CartComponent },
@@ -25,7 +26,6 @@ const routes: Route[] = [
 @NgModule({
   imports: [
     CommonModule,
-    BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forChild(routes),
@@ -42,7 +42,8 @@ const routes: Route[] = [
     CartItemComponent,
     CartSummeryComponent,
     SuccessComponent,
+    OrderTransactionComponent,
   ],
-  exports: [CartIconComponent],
+  exports: [CartIconComponent, OrderTransactionComponent],
 })
 export class OrderModule {}

@@ -1,0 +1,79 @@
+<form
+  [formGroup]="form"
+  (ngSubmit)="onSubmit()"
+  class="formgrid grid p-fluid"
+  id="admin__form"
+>
+  <div class="field col-7">
+    <label class="block">Old Password</label>
+    <span class="p-input-icon-left">
+      <i class="pi pi-key"></i>
+      <input formControlName="oldPassword" type="password" pInputText />
+    </span>
+    <small
+      class="p-error"
+      *ngIf="
+        form.controls.oldPassword.touched &&
+        form.controls.oldPassword.hasError('required')
+      "
+    >
+      Old password is required
+    </small>
+  </div>
+  <div class="field col-7">
+    <label class="block">New Password</label>
+    <span class="p-input-icon-left">
+      <i class="pi pi-key"></i>
+      <input formControlName="newPassword" type="password" pInputText />
+    </span>
+    <small
+      class="p-error"
+      *ngIf="
+        form.controls.newPassword.touched &&
+        form.controls.newPassword.hasError('required')
+      "
+    >
+      New password is required
+    </small>
+  </div>
+  <div class="field col-7">
+    <label class="block">Confirm New Password</label>
+    <span class="p-input-icon-left">
+      <i class="pi pi-key"></i>
+      <input formControlName="confirmPassword" type="password" pInputText />
+    </span>
+    <small
+      class="p-error"
+      *ngIf="
+        form.controls.confirmPassword.touched &&
+        form.controls.confirmPassword.hasError('required')
+      "
+    >
+      Confirm password is required
+    </small>
+    <small
+      class="p-error"
+      *ngIf="
+        form.controls.confirmPassword.touched &&
+        form.controls.newPassword.value !=
+          form.controls.confirmPassword.value &&
+        !form.controls.confirmPassword.hasError('required')
+      "
+    >
+      Password is not match
+    </small>
+  </div>
+  <div class="field col-12" *ngIf="errorMessage">
+    <small class="p-error">
+      {{ errorMessage }}
+    </small>
+  </div>
+  <div class="col-12">
+    <button type="submit" class="btn btn--primary">
+      <i class="pi pi-save"></i>Save
+    </button>
+    <button type="button" class="btn btn--light">
+      <i class="pi pi-refresh"></i>Discuss
+    </button>
+  </div>
+</form>

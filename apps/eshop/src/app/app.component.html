@@ -1,5 +1,5 @@
 <p-toast position="bottom-center" key="bc"></p-toast>
-<div id="eshop-app" *ngIf="currentRoute != '/login'">
+<div id="eshop-app" *ngIf="!['/login', '/register'].includes(currentRoute)">
   <eshop-header></eshop-header>
   <div id="main-content">
     <div class="container">
@@ -9,6 +9,6 @@
   <eshop-footer></eshop-footer>
 </div>
 
-<section *ngIf="currentRoute == '/login'">
+<section *ngIf="currentRoute == '/login' || currentRoute == '/register'">
   <router-outlet></router-outlet>
 </section>

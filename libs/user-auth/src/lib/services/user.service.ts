@@ -32,6 +32,16 @@ export class UserService {
     return this.http.delete<any>(`${this.apiUrl}/${itemId}`);
   }
 
+  updatePassword(
+    itemId: string,
+    data: { oldPassword: string; newPassword: string }
+  ) {
+    return this.http.patch<any>(
+      `${this.apiUrl}/${itemId}/update-password`,
+      data
+    );
+  }
+
   initAppSession() {
     this.usersFacade.buildUserSession();
   }

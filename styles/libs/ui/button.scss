@@ -42,3 +42,33 @@
     }
   }
 }
+
+.btn {
+  border: none;
+  background: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  margin: 2px;
+  border-radius: 17px;
+  font-weight: 600;
+  .pi {
+    font-size: 13px;
+    float: left;
+    margin-right: 5px;
+  }
+  &--primary {
+    background-color: $primary-color-dark;
+    color: #fff;
+    transition: box-shadow 0.2s ease-in-out;
+    &:hover {
+      box-shadow: 0 0 5px 0 rgba($color: $primary-color, $alpha: 0.5);
+    }
+  }
+  &--light {
+    background-color: $surface-ground;
+    transition: box-shadow 0.2s ease-in-out;
+    &:hover {
+      box-shadow: 0 0 5px 0 rgba($color: $surface-ground, $alpha: 0.5);
+    }
+  }
+}

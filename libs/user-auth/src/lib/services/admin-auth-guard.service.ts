@@ -10,14 +10,15 @@ import { LocalStorageService } from './localstorage.service';
 @Injectable({
   providedIn: 'root',
 })
-export class AuthGuardService implements CanActivate {
+export class AdminAuthGuardService implements CanActivate {
   constructor(private router: Router, private local: LocalStorageService) {}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     const localToken = this.local.getToken();
     if (localToken) {
       const tokenDecode: any = JSON.parse(atob(localToken.split('.')[1]));
-      if (this.local.isTokenExpired(+tokenDecode.exp)) return true;
+      if (tokenDecode.isAdmin && this.local.isTokenExpired(+tokenDecode.exp))
+        return true;
     }
 
     this.router.navigate(['/login']);

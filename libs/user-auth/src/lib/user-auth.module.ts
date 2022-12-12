@@ -11,8 +11,12 @@ import { ButtonModule } from 'primeng/button';
 import * as userReducer from './state/users.reducer';
 import { UsersEffects } from './state/users.effects';
 import { UsersFacade } from './state/users.facade';
+import { RegisterComponent } from './pages/register/register.component';
 
-const routes: Route[] = [{ path: 'login', component: LoginComponent }];
+const routes: Route[] = [
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+];
 
 @NgModule({
   imports: [
@@ -25,7 +29,7 @@ const routes: Route[] = [{ path: 'login', component: LoginComponent }];
     StoreModule.forFeature(userReducer.USER_FEATURE_KEY, userReducer.reducer),
     EffectsModule.forFeature([UsersEffects]),
   ],
-  declarations: [LoginComponent],
+  declarations: [LoginComponent, RegisterComponent],
   providers: [UsersFacade],
 })
 export class UserAuthModule {}

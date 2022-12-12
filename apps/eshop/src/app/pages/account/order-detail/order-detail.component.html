@@ -1,0 +1,100 @@
+<div class="grid" *ngIf="order.orderItems; else loading">
+  <div class="col-4">
+    <div class="orderitem__info">
+      <div class="order--detail">
+        <div class="detail--item">
+          <strong>Order Information</strong><br />
+          <span>ID: #{{ order._id }}</span> <br />
+          <span>Date: {{ order.dateOrdered | date: 'short' }}</span> <br />
+          <span>{{ order.shippingAddress1 }}</span> <br />
+          <span>{{ order.city }}, #{{ order.zip }}</span> <br />
+          <span>{{ order.country }}</span>
+        </div>
+      </div>
+      <div class="order--detail">
+        <div class="detail--item">
+          <strong>Customer</strong><br />
+          <span>{{ order.user.name }}</span> <br />
+          <span>Tel: {{ order.phone }}</span>
+        </div>
+      </div>
+    </div>
+    <order-transaction [status]="order.status"></order-transaction>
+  </div>
+  <div class="col-8 m-0 p-0">
+    <div class="grid">
+      <div class="col-12">
+        <div class="orderitem__list">
+          <div class="orderitem__item" *ngFor="let item of order.orderItems">
+            <div class="grid">
+              <div class="col orderitem__item--product">
+                <img [src]="item.product.image" alt="" />
+                <div class="product--detail">
+                  <h3>{{ item.product.name }}</h3>
+                  <p>{{ item.product.price | currency }}</p>
+                  <strong>Qty: {{ item.quantity }}</strong>
+                </div>
+              </div>
+              <div class="col-3 orderitem__item--option text-right">
+                <p class="mb-2">
+                  Total Price:
+                  <strong>{{
+                    item.quantity * item.product.price | currency
+                  }}</strong>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="orderitem__summery">
+          <div class="orderitem__summery--top">
+            <div class="grid">
+              <div class="col-4">Subtotal</div>
+              <div class="col-8 text-right">
+                <strong>{{ TotalPrice | currency }}</strong>
+              </div>
+              <div class="col-4">Tax</div>
+              <div class="col-8 text-right">
+                <strong>{{ tax | currency }}</strong>
+              </div>
+            </div>
+          </div>
+          <hr />
+          <div class="orderitem__summery--bottom">
+            <div class="grid">
+              <div class="col-4">Total</div>
+              <div class="col-8 text-right">
+                <strong>{{
+                  (TotalPrice > 0 ? TotalPrice + tax : 0) | currency
+                }}</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-12">
+    <div class="menubar">
+      <div class="grid">
+        <div class="col-8">
+          <button
+            pButton
+            pRipple
+            type="button"
+            icon="pi pi-arrow-left"
+            label="Back"
+            class="p-button-sm p-button-outlined p-button-rounded p-button-secondary"
+            routerLink="/user/orders"
+          ></button>
+        </div>
+        <div class="col-4"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #loading>
+  <div class="custom-loader"></div>
+</ng-template>

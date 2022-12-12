@@ -1,0 +1,41 @@
+<div class="account__wrapper">
+  <div class="account__sidebar">
+    <div class="card user__profile">
+      <img src="/assets/banner-vector.png" alt="" class="user__profile--img" />
+      <div class="user__profile--info" *ngIf="user">
+        <p>{{ user.name }}</p>
+        <p>{{ user.email }}</p>
+      </div>
+      <button
+        pButton
+        pRipple
+        type="button"
+        icon="pi pi-sign-out"
+        class="p-button-rounded p-button-danger p-button-outlined"
+        (click)="signOut()"
+      ></button>
+    </div>
+    <div class="card navbar">
+      <ul>
+        <li>
+          <a routerLink="dashboard" routerLinkActive="active">
+            <i class="pi pi-home"></i>Dashboard
+          </a>
+        </li>
+        <li>
+          <a routerLink="orders" routerLinkActive="active">
+            <i class="pi pi-box"></i>Order
+          </a>
+        </li>
+        <li>
+          <a routerLink="setting" routerLinkActive="active">
+            <i class="pi pi-sliders-h"></i>Setting
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="account__main" style="height: calc(100vh - 205px)">
+    <router-outlet></router-outlet>
+  </div>
+</div>

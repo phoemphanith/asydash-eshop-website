@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService, User, UserService } from '@eshop/user-auth';
 import { MenuItem, MessageService } from 'primeng/api';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'eshop-header',
@@ -11,6 +12,8 @@ import { MenuItem, MessageService } from 'primeng/api';
 export class HeaderComponent implements OnInit {
   items = [] as MenuItem[];
   isUserLogin: boolean = false;
+  userSub = {} as Subscription;
+
   constructor(
     private router: Router,
     private userService: UserService,
@@ -19,6 +22,10 @@ export class HeaderComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.userSub = this.authService.isUserLogin.subscribe((flag: boolean) => {
+      this.isUserLogin = flag;
+    });
+
     this.userService._currentUser().subscribe((user: User) => {
       if (user) {
         this.isUserLogin = true;
@@ -27,21 +34,21 @@ export class HeaderComponent implements OnInit {
             label: 'Dashboard',
             icon: 'pi pi-home',
             command: () => {
-              this.router.navigate(['/dashboard']);
+              this.router.navigate(['/user/dashboard']);
             },
           },
           {
             label: 'Orders',
             icon: 'pi pi-box',
             command: () => {
-              this.router.navigate(['/orders']);
+              this.router.navigate(['/user/orders']);
             },
           },
           {
             label: 'Setting',
             icon: 'pi pi-sliders-h',
             command: () => {
-              this.router.navigate(['/setting']);
+              this.router.navigate(['/user/setting']);
             },
           },
           {
@@ -49,7 +56,6 @@ export class HeaderComponent implements OnInit {
             icon: 'pi pi-sign-out',
             escape: false,
             command: () => {
-              this.isUserLogin = false;
               this.authService.logout();
               this.userService.initAppSession();
               this.messageService.add({

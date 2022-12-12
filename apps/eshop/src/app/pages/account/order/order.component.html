@@ -1,0 +1,111 @@
+<div class="p-grid">
+  <div class="p-col-12">
+    <div class="menubar">
+      <div class="grid">
+        <div class="col-8">
+          <div class="menu__button">
+            <button
+              type="button"
+              [ngClass]="{ active: currentStatus == -1 }"
+              (click)="onListOrderByStatus(-1)"
+            >
+              All
+            </button>
+            <button
+              type="button"
+              [ngClass]="{ active: currentStatus == 0 }"
+              (click)="onListOrderByStatus(0)"
+            >
+              Pending
+            </button>
+            <button
+              type="button"
+              [ngClass]="{ active: currentStatus == 1 }"
+              (click)="onListOrderByStatus(1)"
+            >
+              Confirm
+            </button>
+            <button
+              type="button"
+              [ngClass]="{ active: currentStatus == 2 }"
+              (click)="onListOrderByStatus(2)"
+            >
+              Delivery
+            </button>
+            <button
+              type="button"
+              [ngClass]="{ active: currentStatus == 3 }"
+              (click)="onListOrderByStatus(3)"
+            >
+              complete
+            </button>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="search__order">
+            <div class="search__order--input">
+              <input [(ngModel)]="orderId" type="text" placeholder="Search" />
+              <i class="pi pi-search" (click)="onSearchOrder()"></i>
+              <i
+                class="pi pi-refresh"
+                [ngClass]="{ 'pi-spin': isRefreshing }"
+                (click)="onOrderRefresh()"
+              ></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="p-col-12">
+    <p-table
+      [value]="orders"
+      [paginator]="true"
+      [rows]="8"
+      [scrollable]="true"
+      scrollHeight="585px"
+      [showCurrentPageReport]="true"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    >
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Order ID</th>
+          <th pSortableColumn="dateOrdered">
+            Order Date <p-sortIcon field="dateOrdered"></p-sortIcon>
+          </th>
+          <th>Total Item</th>
+          <th>Total Price</th>
+          <th pSortableColumn="status">
+            Status <p-sortIcon field="status"></p-sortIcon>
+          </th>
+          <th></th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-order>
+        <tr>
+          <td>{{ order._id }}</td>
+          <td>{{ order.dateOrdered | date: 'short' }}</td>
+          <td class="text-center">{{ order.orderItems.length }}</td>
+          <td>{{ order.totalPrice | currency }}</td>
+          <td>
+            <p-tag
+              [severity]="readStatus(order.status).color"
+              [value]="readStatus(order.status).label"
+              [rounded]="true"
+            ></p-tag>
+          </td>
+          <td>
+            <button
+              pButton
+              pRipple
+              type="button"
+              icon="pi pi-eye"
+              class="p-button-rounded p-button-info p-button-text"
+              [routerLink]="order._id"
+            ></button>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>

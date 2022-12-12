@@ -8,12 +8,12 @@
             <span class="logo__name">Asydash Shop</span>
           </div>
           <div class="form__layout m-3 mt-6">
-            <h3>Login</h3>
+            <h3>Register</h3>
             <p>Please enter your information!</p>
             <form
               [formGroup]="form"
               (ngSubmit)="onSubmit()"
-              class="formgrid grid p-fluid mt-4 pr-5"
+              class="formgrid grid p-fluid m-0 p-0 mt-4"
             >
               <div class="field col-12">
                 <span class="p-input-icon-left">
@@ -51,10 +51,40 @@
                   Password is required
                 </small>
               </div>
+              <div class="field col-12">
+                <span class="p-input-icon-left">
+                  <i class="pi pi-key"></i>
+                  <input
+                    formControlName="confirmPassword"
+                    type="password"
+                    pInputText
+                    placeholder="Confirm Password"
+                  />
+                </span>
+                <small
+                  class="p-error"
+                  *ngIf="
+                    isSubmit && formControl.confirmPassword.hasError('required')
+                  "
+                >
+                  Confirm password is required
+                </small>
+                <small
+                  class="p-error"
+                  *ngIf="
+                    isSubmit &&
+                    formControl.password.value !=
+                      formControl.confirmPassword.value &&
+                    !formControl.confirmPassword.hasError('required')
+                  "
+                >
+                  Password is not match
+                </small>
+              </div>
               <div class="col-12">
                 <p-button
                   type="submit"
-                  label="Login"
+                  label="Register"
                   [icon]="
                     'pi ' +
                     (isLoading ? 'pi-spin pi-spinner' : 'pi-arrow-right')
@@ -63,10 +93,10 @@
                 ></p-button>
               </div>
               <div class="col-12 mt-2 text-center">
-                <a routerLink="/register"> Create New Account </a>
-              </div>
-              <div class="col-12 mt-2">
                 <small class="p-error" *ngIf="authError">{{ authError }}</small>
+              </div>
+              <div class="col-12 mt-2 text-center">
+                <a routerLink="/login"> Already Have Account </a>
               </div>
             </form>
           </div>

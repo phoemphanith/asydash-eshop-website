@@ -17,7 +17,7 @@ import { JwtInterceptor, UserAuthModule } from '@eshop/user-auth';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { MenuModule } from 'primeng/menu';
-import { MessageService } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -47,6 +47,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   ],
   providers: [
     MessageService,
+    ConfirmationService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],

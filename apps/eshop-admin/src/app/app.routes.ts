@@ -1,5 +1,5 @@
 import { Route } from '@angular/router';
-import { AuthGuardService as AuthGuard } from '@eshop/user-auth';
+import { AdminAuthGuardService as AuthGuard } from '@eshop/user-auth';
 import { CategoryFormComponent } from './categories/category-form/category-form.component';
 import { CategoryListComponent } from './categories/category-list/category-list.component';
 import { OrderDetailComponent } from './orders/order-detail/order-detail.component';

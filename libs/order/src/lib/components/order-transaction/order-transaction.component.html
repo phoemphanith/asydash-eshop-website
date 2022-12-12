@@ -1,0 +1,17 @@
+<div class="orderitem__transaction" #mySelector>
+  <div class="progress-bar"></div>
+  <ul>
+    <li [ngClass]="{ active: status >= 0 }">
+      <i class="pi pi-cart-plus"></i> <span>Your order is pending</span>
+    </li>
+    <li [ngClass]="{ active: status >= 1 }">
+      <i class="pi pi-box"></i> <span>Your order is confirm</span>
+    </li>
+    <li [ngClass]="{ active: status >= 2 }">
+      <i class="pi pi-truck"></i> <span>Your order is delivery</span>
+    </li>
+    <li [ngClass]="{ active: status == 3 }">
+      <i class="pi pi-check"></i> <span>Your order is success</span>
+    </li>
+  </ul>
+</div>

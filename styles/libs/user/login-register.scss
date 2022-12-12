@@ -78,6 +78,12 @@
             }
           }
         }
+        a {
+          color: $secondary-color;
+          &:hover {
+            opacity: 0.8;
+          }
+        }
       }
     }
   }
