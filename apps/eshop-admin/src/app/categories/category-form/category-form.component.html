@@ -5,7 +5,11 @@
   ></eshop-admin-page-header>
   <div class="page__body">
     <p-card>
+      <ng-template #loading>
+        <div class="custom-loader"></div>
+      </ng-template>  
       <form
+        *ngIf="!isLoading; else loading"
         [formGroup]="form"
         (ngSubmit)="onSubmit()"
         class="formgrid grid p-fluid"
@@ -46,7 +50,7 @@
             <div class="p-toolbar-group-left">
               <p-button
                 [label]="isEditMode ? 'Update' : 'Save'"
-                icon="pi pi-save"
+                [icon]="saveLoading ? 'pi pi-spin pi-spinner' : 'pi pi-save'"
                 styleClass="p-button-success"
                 type="submit"
                 [disabled]="!form.valid"

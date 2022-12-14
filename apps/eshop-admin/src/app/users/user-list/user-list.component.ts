@@ -10,6 +10,7 @@ import * as CountryData from 'i18n-iso-countries';
 })
 export class UserListComponent {
   users: Product[] = [];
+  isLoading: boolean = false;
   constructor(
     private service: UserService,
     private confirmationService: ConfirmationService,
@@ -52,8 +53,10 @@ export class UserListComponent {
   }
 
   private _fetchData() {
+    this.isLoading = true;
     this.service.getUsers().subscribe((res: any) => {
       this.users = res.result;
+      this.isLoading = false;
     });
   }
 }

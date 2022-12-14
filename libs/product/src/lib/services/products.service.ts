@@ -19,6 +19,14 @@ export class ProductsService {
     return this.http.get<Product[]>(this.apiUrl, { params: param });
   }
 
+  searchProduct(name?: string): Observable<Product[]> {
+    let param = new HttpParams();
+    if (name) {
+      param = param.append('name', name);
+    }
+    return this.http.get<Product[]>(`${this.apiUrl}/search`, { params: param });
+  }
+
   getProduct(itemId: string): Observable<Product> {
     return this.http.get<Product>(`${this.apiUrl}/${itemId}`);
   }

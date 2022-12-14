@@ -8,10 +8,13 @@ import { ProductsService } from '../../services/products.service';
 })
 export class ProductFeatureComponent implements OnInit {
   products: Product[] | any;
+  isLoading: boolean = false;
   constructor(private service: ProductsService) {}
   ngOnInit(): void {
+    this.isLoading = true;
     this.service.getProductsFeature(8).subscribe((res: any) => {
       this.products = res.result;
+      this.isLoading = false;
     });
   }
 }

@@ -1,6 +1,19 @@
 <div class="search__product">
   <div class="search__product--input">
     <i class="pi pi-search"></i>
-    <input type="text" placeholder="Search" />
+    <input type="text" placeholder="Search" [(ngModel)]="search" (keyup)="onOpenSearch()" />
+  </div>
+  <div class="search__product--layout" *ngIf="search && products">
+    <ng-template #loading>
+      <div class="custom-loader"></div>
+    </ng-template>
+    <ul *ngIf="!isLoading; else loading">
+      <li *ngFor="let product of products">
+        <a class="search__product--item">
+          <p><strong>{{product.name}}</strong></p>
+          <p><small>{{product.description}}</small></p>
+        </a>
+      </li>
+    </ul>
   </div>
 </div>

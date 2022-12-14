@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Product, ProductsService } from '@eshop/product';
-import { ConfirmationService, MessageService } from 'primeng/api';
+import { ConfirmationService, LazyLoadEvent, MessageService } from 'primeng/api';
 
 @Component({
   selector: 'eshop-admin-product-list',
@@ -8,6 +8,7 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 })
 export class ProductListComponent {
   products: Product[] = [];
+  isLoading: boolean = false;
   constructor(
     private service: ProductsService,
     private confirmationService: ConfirmationService,
@@ -18,8 +19,12 @@ export class ProductListComponent {
   }
 
   onFetchData() {
+    this.isLoading = true;
     this.service.getProducts().subscribe((res: any) => {
-      this.products = res.result;
+      if (res) {
+        this.isLoading = false;
+        this.products = res.result;
+      }
     });
   }
 

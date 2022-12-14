@@ -6,12 +6,16 @@
   ></eshop-admin-page-header>
   <div class="page__body">
     <p-card>
+      <!-- <ng-template #loading>
+        <div class="custom-loader"></div>
+      </ng-template>     -->
       <div class="p-grid">
         <div class="p-col-12">
           <p-table
             [value]="products"
             [paginator]="true"
             [rows]="10"
+            [loading]="isLoading"
             [showCurrentPageReport]="true"
             currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
           >

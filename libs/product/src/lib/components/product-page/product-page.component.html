@@ -1,4 +1,10 @@
-<div class="product__page" *ngIf="!isLoading">
+
+<ng-template #loading>
+  <div class="custom-loader__page">
+    <div class="custom-loader"></div>
+  </div>
+</ng-template>
+<div class="product__page" *ngIf="!isLoading; else loading">
   <div class="grid product__detail">
     <div class="col-6">
       <ui-gallery [images]="product.images"></ui-gallery>

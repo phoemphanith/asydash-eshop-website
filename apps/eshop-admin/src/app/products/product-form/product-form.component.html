@@ -5,16 +5,11 @@
   ></eshop-admin-page-header>
   <div class="page__body">
     <p-card>
-      <div *ngIf="isLoading" style="text-align: center">
-        <p-progressSpinner
-          [style]="{ width: '50px', height: '50px' }"
-          fill="var(--surface-ground)"
-          strokeWidth="4"
-          animationDuration="1s"
-        ></p-progressSpinner>
-      </div>
+      <ng-template #loading>
+        <div class="custom-loader"></div>
+      </ng-template>  
       <form
-        *ngIf="!isLoading"
+        *ngIf="!isLoading; else loading"
         [formGroup]="form"
         (ngSubmit)="onSubmit()"
         class="formgrid grid p-fluid"
@@ -112,6 +107,7 @@
           <label class="block">Image</label>
           <input
             type="file"
+            multiple
             class="p-inputtext"
             (change)="onFileHandler($event)"
           />
@@ -125,7 +121,7 @@
             Image is required
           </small>
           <div>
-            <img [src]="imageDisplay" style="width: 120px; margin-top: 5px" />
+            <img *ngFor="let image of imageDisplay" [src]="image" style="display: inline-block;width: 120px; margin-top: 5px" />
           </div>
         </div>
 
@@ -134,7 +130,7 @@
             <div class="p-toolbar-group-left">
               <p-button
                 [label]="isEditMode ? 'Update' : 'Save'"
-                icon="pi pi-save"
+                [icon]="onSaveLoading ? 'pi pi-spin pi-spinner': 'pi pi-save'"
                 styleClass="p-button-success"
                 type="submit"
                 [disabled]="!form.valid"

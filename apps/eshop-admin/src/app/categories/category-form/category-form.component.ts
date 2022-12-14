@@ -13,6 +13,9 @@ import { timer } from 'rxjs';
 export class CategoryFormComponent implements OnInit {
   isEditMode: boolean = false;
   currentId: string = '';
+  isLoading: boolean = false;
+  saveLoading: boolean = false;
+
   form = this.fb.group({
     name: ['', Validators.required],
     icon: ['', Validators.required],
@@ -32,6 +35,7 @@ export class CategoryFormComponent implements OnInit {
   }
 
   onSubmit() {
+    this.saveLoading = true;
     const item: Category = <Category>{
       id: this.currentId,
       name: this.categoryForm.name.value,
@@ -62,6 +66,7 @@ export class CategoryFormComponent implements OnInit {
           summary: `(${err.status}) ${err.statusText}`,
           detail: "Can't create category",
         });
+        this.saveLoading = false;
       }
     );
   }
@@ -82,22 +87,28 @@ export class CategoryFormComponent implements OnInit {
           summary: `(${err.status}) ${err.statusText}`,
           detail: "Can't update category",
         });
+        this.saveLoading = false;
       }
     );
   }
 
   onFetchCategory() {
+    this.isLoading = true;
     this.route.params.subscribe((params: any) => {
       if (params.id) {
         this.isEditMode = true;
         this.currentId = params.id;
         this.service.getCategory(this.currentId).subscribe((res: any) => {
-          this.categoryForm.name.setValue(res.result.name);
-          this.categoryForm.icon.setValue(res.result.icon);
-          this.categoryForm.color.setValue(res.result.color);
+          if (res) {
+            this.categoryForm.name.setValue(res.result.name);
+            this.categoryForm.icon.setValue(res.result.icon);
+            this.categoryForm.color.setValue(res.result.color);
+            this.isLoading = false;
+          }
         });
       } else {
         this.isEditMode = false;
+        this.isLoading = false;
         this.currentId = '';
       }
     });

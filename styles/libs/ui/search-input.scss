@@ -1,6 +1,8 @@
 .search {
   &__product {
+    position: relative;
     &--input {
+      position: relative;
       display: flex;
       align-items: center;
       background-color: var(--surface-b);
@@ -17,6 +19,35 @@
         background: none;
         border: none;
         outline: none;
+      }
+      z-index: 2;
+    }
+
+    &--layout{
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      transform: translateY(105%);
+      padding: 0.5rem 0.75rem;
+      background-color: #fff;
+      z-index: 100;
+    }
+    &--item{
+      display: inline-block;
+      margin-bottom: 0.5rem;
+      cursor: pointer;
+      strong{
+        transition: all 0.3s ease-in-out;
+      }
+      small{
+        transition: all 0.3s ease-in-out;
+      }
+      &:hover{
+        color: $primary-color-dark;
+        small{
+          color: var(--text-color-secondary);
+        }
       }
     }
   }

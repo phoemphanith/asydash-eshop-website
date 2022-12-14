@@ -1,6 +1,9 @@
 <div class="product__feature">
   <h3>Feature Product</h3>
-  <div class="grid">
+  <ng-template #loading>
+    <div class="custom-loader"></div>
+  </ng-template>
+  <div class="grid" *ngIf="!isLoading; else loading">
     <div class="col-3" *ngFor="let product of products">
       <product-item [product]="product"></product-item>
     </div>

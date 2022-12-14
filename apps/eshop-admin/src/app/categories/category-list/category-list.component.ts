@@ -8,6 +8,7 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 })
 export class CategoryListComponent implements OnInit {
   categories: Category[] = [];
+  isLoading: boolean = false;
   constructor(
     private service: CategoryService,
     private confirmationService: ConfirmationService,
@@ -18,9 +19,13 @@ export class CategoryListComponent implements OnInit {
   }
 
   onFetchData() {
+    this.isLoading = true;
     this.service.getCategories().subscribe((res: any) => {
-      this.categories = res.result;
-    });
+      if (res) {
+        this.categories = res.result;
+        this.isLoading = false;
+      }
+    }, () => {this.isLoading = false});
   }
 
   onDelete(categoryId: string) {

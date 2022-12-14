@@ -11,10 +11,12 @@ import { MessageService } from 'primeng/api';
 })
 export class ProductFormComponent {
   isLoading: boolean = false;
+  onSaveLoading: boolean = false;
   isEditMode: boolean = false;
   currentId: string = '';
   objCategories = [];
-  imageDisplay: any;
+  imageDisplay = [] as any;
+  imageFiles = [] as any;
 
   form = this.fb.group({
     name: ['', Validators.required],
@@ -25,7 +27,7 @@ export class ProductFormComponent {
     isFeatured: [false, Validators.required],
     description: ['', Validators.required],
     richDescription: [''],
-    image: ['', Validators.required],
+    image: [[], Validators.required],
   });
 
   constructor(
@@ -47,6 +49,13 @@ export class ProductFormComponent {
     Object.keys(this.productForm).map((key) => {
       productData.append(key, this.form.get(key)?.value);
     });
+
+    if (this.imageFiles.length > 0) {
+      this.imageFiles.map((file: any) => {
+        productData.append('images', file);
+      });
+    }
+    
     if (this.isEditMode) {
       this._updateItem(productData);
     } else {
@@ -55,19 +64,24 @@ export class ProductFormComponent {
   }
 
   onFileHandler(event: any) {
-    const file = event.target.files[0];
-    if (file) {
-      this.productForm.image.patchValue(file);
+    const files = Object.entries(event.target.files) as any;
+    
+    if (files) {
+      this.productForm.image.patchValue(files);
       this.productForm.image.updateValueAndValidity();
-      const fileReader = new FileReader();
-      fileReader.onload = () => {
-        this.imageDisplay = fileReader.result;
-      };
-      fileReader.readAsDataURL(file);
+      files.map((file: any) => {
+        this.imageFiles.push(file[1]);
+        const fileReader = new FileReader();
+        fileReader.onload = () => {
+          this.imageDisplay.push(fileReader.result);
+        };
+        fileReader.readAsDataURL(file[1]);
+      });
     }
   }
 
   private _addItem(data: FormData) {
+    this.onSaveLoading = true;
     this.service.createProduct(data).subscribe(
       () => {
         this.messageService.add({
@@ -78,6 +92,7 @@ export class ProductFormComponent {
         this.location.back();
       },
       (err) => {
+        this.onSaveLoading = false;
         this.messageService.add({
           severity: 'error',
           summary: `(${err.status}) ${err.statusText}`,
@@ -88,6 +103,7 @@ export class ProductFormComponent {
   }
 
   private _updateItem(data: FormData) {
+    this.onSaveLoading = true;
     this.service.updateProduct(data, this.currentId).subscribe(
       () => {
         this.messageService.add({
@@ -95,9 +111,11 @@ export class ProductFormComponent {
           summary: 'Update Product',
           detail: 'Product save successfully',
         });
+        this.onSaveLoading = false;
         this.location.back();
       },
       (err) => {
+        this.onSaveLoading = false;
         this.messageService.add({
           severity: 'error',
           summary: `(${err.status}) ${err.statusText}`,
@@ -114,19 +132,23 @@ export class ProductFormComponent {
         this.isEditMode = true;
         this.currentId = params.id;
         this.service.getProduct(this.currentId).subscribe((res: any) => {
-          this.productForm.name.setValue(res.result.name);
-          this.productForm.brand.setValue(res.result.brand);
-          this.productForm.price.setValue(res.result.price);
-          this.productForm.countInStock.setValue(res.result.countInStock);
-          this.productForm.category.setValue(res.result.category);
-          this.productForm.isFeatured.setValue(res.result.isFeatured);
-          this.productForm.description.setValue(res.result.description);
-          this.productForm.richDescription.setValue(res.result.richDescription);
-          this.imageDisplay = res.result.image;
-          this.productForm.image.setValidators([]);
-          this.productForm.image.updateValueAndValidity();
+          if (res) {
+            console.log(res.result);
+            
+            this.productForm.name.setValue(res.result.name);
+            this.productForm.brand.setValue(res.result.brand);
+            this.productForm.price.setValue(res.result.price);
+            this.productForm.countInStock.setValue(res.result.countInStock);
+            this.productForm.category.setValue(res.result.category);
+            this.productForm.isFeatured.setValue(res.result.isFeatured);
+            this.productForm.description.setValue(res.result.description);
+            this.productForm.richDescription.setValue(res.result.richDescription);
+            this.imageDisplay = res.result.images;
+            this.productForm.image.setValidators([]);
+            this.productForm.image.updateValueAndValidity();
+            this.isLoading = false;
+          }
         });
-        this.isLoading = false;
       } else {
         this.isEditMode = false;
         this.currentId = '';

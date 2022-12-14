@@ -9,11 +9,14 @@ import { Router } from '@angular/router';
 })
 export class CategoryBannerComponent implements OnInit {
   categories: Category | any;
+  isLoading: boolean = false;
   constructor(private service: CategoryService, private router: Router) {}
 
   ngOnInit(): void {
+    this.isLoading = true;
     this.service.getCategories().subscribe((res: any) => {
       this.categories = res.result;
+      this.isLoading = false;
     });
   }
 

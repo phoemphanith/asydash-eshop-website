@@ -3,7 +3,10 @@
     <div class="col-3">
       <div class="category__product">
         <h3>Filter by</h3>
-        <ul>
+        <ng-template #categoryLoading>
+          <div class="custom-loader"></div>
+        </ng-template>
+        <ul *ngIf="!isCategoryLoading; else categoryLoading">
           <li>
             <a (click)="onSelectCategory()">
               <i class="pi pi-filter"></i><span>All Products</span>
@@ -22,7 +25,10 @@
       </div>
     </div>
     <div class="col-9">
-      <div class="grid">
+      <ng-template #productLoading>
+        <div class="custom-loader"></div>
+      </ng-template> 
+      <div class="grid" *ngIf="!isProductLoading; else productLoading">
         <div class="col-4" *ngFor="let product of products">
           <product-item [product]="product"></product-item>
         </div>

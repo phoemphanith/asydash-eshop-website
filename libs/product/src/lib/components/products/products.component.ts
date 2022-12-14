@@ -13,6 +13,9 @@ export class ProductsComponent implements OnInit {
   categories: Category[] | any;
   products: Product[] | any;
   isCategoryPage: boolean = false;
+  isProductLoading: boolean = false;
+  isCategoryLoading: boolean = false;
+
   constructor(
     private categoryService: CategoryService,
     private productService: ProductsService,
@@ -36,14 +39,18 @@ export class ProductsComponent implements OnInit {
   }
 
   private _getCategories() {
+    this.isCategoryLoading = true;
     this.categoryService.getCategories().subscribe((res: any) => {
       this.categories = res.result;
+      this.isCategoryLoading = false;
     });
   }
 
   private _getProducts(categoryId?: string) {
+    this.isProductLoading = true;
     this.productService.getProducts(categoryId).subscribe((res: any) => {
       this.products = res.result;
+      this.isProductLoading = false;
     });
   }
 }
