@@ -9,7 +9,7 @@
     </ng-template>
     <ul *ngIf="!isLoading; else loading">
       <li *ngFor="let product of products">
-        <a class="search__product--item">
+        <a [routerLink]="'/products/'+product._id" class="search__product--item">
           <p><strong>{{product.name}}</strong></p>
           <p><small>{{product.description}}</small></p>
         </a>
