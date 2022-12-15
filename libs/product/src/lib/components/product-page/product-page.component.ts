@@ -20,8 +20,8 @@ export class ProductPageComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.isLoading = true;
     this.route.params.subscribe((params: any) => {
+      this.isLoading = true;
       if (params.id) {
         this.productService.getProduct(params.id).subscribe((res: any) => {
           this.product = res.result;

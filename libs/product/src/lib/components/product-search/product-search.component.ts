@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ProductsService } from '../../services/products.service';
 
 @Component({
@@ -9,7 +10,7 @@ export class ProductSearchComponent implements OnInit {
   search: string = '';
   products = [] as any;
   isLoading: boolean = false;
-  constructor(private productService: ProductsService) { }
+  constructor(private productService: ProductsService, private router: Router) { }
   
   ngOnInit(): void { }
   
@@ -23,5 +24,10 @@ export class ProductSearchComponent implements OnInit {
         }
       });
     }, 2000);
+  }
+
+  selectProduct(id: string) {
+    this.search = '';
+    this.router.navigate([`products/${id}`]);
   }
 }
